@@ -15,9 +15,9 @@ public static class TTSVoiceRequirements
 
         return gender switch
         {
-            Gender.Male => voice.Gender == Gender.Male,
-            Gender.Female => voice.Gender == Gender.Female,
-            _ => voice.Gender is Gender.Male or Gender.Female,
+            Gender.Male => voice.Gender is Gender.Male or Gender.Epicene or Gender.Neuter,
+            Gender.Female => voice.Gender is Gender.Female or Gender.Epicene or Gender.Neuter,
+            _ => voice.Gender is Gender.Male or Gender.Female or Gender.Epicene or Gender.Neuter,
         };
     }
 

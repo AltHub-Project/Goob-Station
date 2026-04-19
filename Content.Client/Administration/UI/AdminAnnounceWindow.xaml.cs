@@ -99,7 +99,7 @@ namespace Content.Client.Administration.UI
 
         private void PopulateTTSVoices(string? preferredVoiceId = null)
         {
-            var currentVoiceId = TTSVoiceButton.SelectedMetadata as string;
+            var currentVoiceId = GetSelectedTTSVoiceId();
             TTSVoiceButton.Clear();
 
             var voices = _prototypeManager
@@ -203,6 +203,30 @@ namespace Content.Client.Administration.UI
             return string.IsNullOrWhiteSpace(value)
                 ? string.Empty
                 : value.Trim().ToLowerInvariant();
+        }
+
+        public string? GetSelectedTTSVoiceId()
+        {
+            return TryGetSelectedOptionMetadata(TTSVoiceButton) as string;
+        }
+
+        public string? GetSelectedTTSEffectId()
+        {
+            return TryGetSelectedOptionMetadata(TTSEffectButton) as string;
+        }
+
+        private static object? TryGetSelectedOptionMetadata(OptionButton button)
+        {
+            if (button.ItemCount == 0)
+                return null;
+
+            for (var index = 0; index < button.ItemCount; index++)
+            {
+                if (button.GetItemId(index) == button.SelectedId)
+                    return button.GetItemMetadata(index);
+            }
+
+            return null;
         }
         // AltHub Space -> end (TTS)
     }

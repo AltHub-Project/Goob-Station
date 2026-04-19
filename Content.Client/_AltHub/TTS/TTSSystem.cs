@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+using System.Collections.Generic;
 using Content.Shared._AltHub.TTS;
 using Content.Shared.Chat;
 using Robust.Client.Audio;
@@ -18,6 +19,7 @@ public sealed class TTSSystem : EntitySystem
 {
     private const string CommunicationPresetId = "AltHubTTSCommunication";
     private const float WhisperVolume = -4f;
+    private const int MaxActiveTTSPlaybacks = 12;
 
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IResourceManager _resource = default!;
@@ -28,6 +30,8 @@ public sealed class TTSSystem : EntitySystem
 
     private ISawmill _sawmill = default!;
     private int _fileIndex;
+    private readonly LinkedList<ActivePlayback> _activePlaybacks = [];
+    private readonly Dictionary<EntityUid, LinkedListNode<ActivePlayback>> _activePlaybackIndex = [];
 
     public override void Initialize()
     {
@@ -41,11 +45,15 @@ public sealed class TTSSystem : EntitySystem
 
         _sawmill = Logger.GetSawmill("althub.tts.client");
         SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
+        SubscribeLocalEvent<AudioComponent, ComponentShutdown>(OnAudioShutdown);
     }
 
     private void OnPlayTTS(PlayTTSEvent ev)
     {
         if (ev.Data.Length == 0)
+            return;
+
+        if (!EnsurePlaybackCapacity(ev.Kind))
             return;
 
         var filePath = new ResPath($"{_fileIndex++}.ogg");
@@ -74,6 +82,9 @@ public sealed class TTSSystem : EntitySystem
             {
                 _audio.SetEffect(playback.Value.Entity, playback.Value.Component, CommunicationPresetId);
             }
+
+            if (playback != null)
+                TrackPlayback(playback.Value.Entity, ev.Kind);
         }
         catch (Exception e)
         {
@@ -114,4 +125,72 @@ public sealed class TTSSystem : EntitySystem
 
         return audioParams;
     }
+
+    private void OnAudioShutdown(EntityUid uid, AudioComponent component, ComponentShutdown args)
+    {
+        UntrackPlayback(uid);
+    }
+
+    private bool EnsurePlaybackCapacity(TTSPlaybackKind incomingKind)
+    {
+        PruneFinishedPlaybacks();
+
+        while (_activePlaybacks.Count >= MaxActiveTTSPlaybacks)
+        {
+            var candidate = FindEvictionCandidate(incomingKind);
+            if (candidate == null)
+            {
+                _sawmill.Warning($"Dropping AltHub TTS clip because the active playback budget of {MaxActiveTTSPlaybacks} was reached.");
+                return false;
+            }
+
+            QueueDel(candidate.Value.Entity);
+            UntrackPlayback(candidate.Value.Entity);
+        }
+
+        return true;
+    }
+
+    private LinkedListNode<ActivePlayback>? FindEvictionCandidate(TTSPlaybackKind incomingKind)
+    {
+        for (var node = _activePlaybacks.First; node != null; node = node.Next)
+        {
+            if (node.Value.Kind != TTSPlaybackKind.Announcement)
+                return node;
+        }
+
+        return incomingKind == TTSPlaybackKind.Announcement
+            ? _activePlaybacks.First
+            : null;
+    }
+
+    private void TrackPlayback(EntityUid uid, TTSPlaybackKind kind)
+    {
+        UntrackPlayback(uid);
+
+        var node = _activePlaybacks.AddLast(new ActivePlayback(uid, kind));
+        _activePlaybackIndex[uid] = node;
+    }
+
+    private void UntrackPlayback(EntityUid uid)
+    {
+        if (!_activePlaybackIndex.Remove(uid, out var node))
+            return;
+
+        _activePlaybacks.Remove(node);
+    }
+
+    private void PruneFinishedPlaybacks()
+    {
+        for (var node = _activePlaybacks.First; node != null;)
+        {
+            var next = node.Next;
+            if (Deleted(node.Value.Entity) || !Exists(node.Value.Entity))
+                UntrackPlayback(node.Value.Entity);
+
+            node = next;
+        }
+    }
+
+    private readonly record struct ActivePlayback(EntityUid Entity, TTSPlaybackKind Kind);
 }

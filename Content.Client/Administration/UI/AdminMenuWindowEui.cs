@@ -35,9 +35,9 @@ namespace Content.Client.Administration.UI
                 AnnounceType =  (AdminAnnounceType) (_window.AnnounceMethod.SelectedMetadata ?? AdminAnnounceType.Station),
                 CloseAfter = !_window.KeepWindowOpen.Pressed,
                 UseTTS = _window.EnableTTS.Pressed, // AltHub Space (TTS)
-                TTSVoiceId = _window.TTSVoiceButton.SelectedMetadata as string, // AltHub Space (TTS)
+                TTSVoiceId = _window.GetSelectedTTSVoiceId(), // AltHub Space (TTS)
                 UseTTSEffect = _window.EnableTTSEffect.Pressed, // AltHub Space (TTS)
-                TTSEffectId = _window.TTSEffectButton.SelectedMetadata as string, // AltHub Space (TTS)
+                TTSEffectId = _window.GetSelectedTTSEffectId(), // AltHub Space (TTS)
             });
 
         }

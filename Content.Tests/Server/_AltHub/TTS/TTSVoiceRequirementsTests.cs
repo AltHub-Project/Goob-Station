@@ -55,6 +55,17 @@ public sealed class TTSVoiceRequirementsTests
         });
     }
 
+    [Test]
+    public void IsSelectableForProfile_AllowsUnknownVoiceGenderAsFallback()
+    {
+        var neuterVoice = BuildVoice("neutral_voice", Gender.Neuter);
+
+        Assert.That(TTSVoiceRequirements.IsSelectableForProfile(neuterVoice, "Human", Gender.Male), Is.True);
+        Assert.That(TTSVoiceRequirements.IsSelectableForProfile(neuterVoice, "Human", Gender.Female), Is.True);
+        Assert.That(TTSVoiceRequirements.IsSelectableForProfile(neuterVoice, "Human", Gender.Epicene), Is.True);
+        Assert.That(TTSVoiceRequirements.IsSelectableForProfile(neuterVoice, "Human", Gender.Neuter), Is.True);
+    }
+
     private static TTSVoicePrototype BuildVoice(string id, Gender gender)
     {
         var voice = (TTSVoicePrototype) RuntimeHelpers.GetUninitializedObject(typeof(TTSVoicePrototype));

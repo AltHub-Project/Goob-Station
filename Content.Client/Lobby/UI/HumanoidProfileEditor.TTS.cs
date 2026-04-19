@@ -116,10 +116,13 @@ public sealed partial class HumanoidProfileEditor
 
         var search = NormalizeTTSVoiceSearch(TTSVoiceSearch.Text);
         var filteredVoices = _ttsVoicePrototypes
-            .Where(voice => voice.Gender == _ttsVoiceListGender && MatchesTTSVoiceSearch(voice, search))
+            .Where(voice => MatchesTTSVoiceListGender(voice) && MatchesTTSVoiceSearch(voice, search))
             .ToList();
 
         TTSVoiceEmptyLabel.Visible = filteredVoices.Count == 0;
+        TTSVoiceEmptyLabel.Text = Loc.GetString(filteredVoices.Count == 0 && _ttsVoicePrototypes.Count == 0
+            ? "humanoid-profile-editor-voice-empty-unavailable"
+            : "humanoid-profile-editor-voice-empty-filtered");
         if (filteredVoices.Count == 0)
             return;
 
@@ -152,6 +155,7 @@ public sealed partial class HumanoidProfileEditor
             var collapsible = new Collapsible(heading, body)
             {
                 Orientation = BoxContainer.LayoutOrientation.Vertical,
+                HorizontalExpand = true,
                 Margin = new Thickness(0, 0, 0, 6),
                 BodyVisible = ShouldExpandTTSVoiceCategory(source, voices, search),
             };
@@ -165,6 +169,15 @@ public sealed partial class HumanoidProfileEditor
 
             TTSVoiceCategories.AddChild(collapsible);
         }
+    }
+
+    private bool MatchesTTSVoiceListGender(TTSVoicePrototype voice)
+    {
+        return _ttsVoiceListGender switch
+        {
+            Gender.Female => voice.Gender is Gender.Female or Gender.Epicene or Gender.Neuter,
+            _ => voice.Gender is Gender.Male or Gender.Epicene or Gender.Neuter,
+        };
     }
 
     private bool ShouldExpandTTSVoiceCategory(string source, IReadOnlyCollection<TTSVoicePrototype> voices, string search)
@@ -242,11 +255,12 @@ public sealed partial class HumanoidProfileEditor
             return;
 
         var genderRule = GetTTSVoiceGenderRuleText();
+        var visibleVoices = _ttsVoicePrototypes.Count(voice => MatchesTTSVoiceListGender(voice));
         if (Profile.TTSVoice == null ||
             !_prototypeManager.TryIndex<TTSVoicePrototype>(Profile.TTSVoice, out var selectedVoice))
         {
             TTSVoiceStatus.SetMessage(
-                $"{Loc.GetString("humanoid-profile-editor-voice-current-none")}\n{genderRule}");
+                $"{Loc.GetString("humanoid-profile-editor-voice-current-none")}\n{genderRule}\n{Loc.GetString("humanoid-profile-editor-voice-current-available", ("count", visibleVoices))}");
             TTSVoiceCurrentPreviewButton.Disabled = true;
             TTSVoiceClearButton.Disabled = true;
             return;
@@ -267,6 +281,7 @@ public sealed partial class HumanoidProfileEditor
         }
 
         lines.Add(genderRule);
+        lines.Add(Loc.GetString("humanoid-profile-editor-voice-current-available", ("count", visibleVoices)));
 
         TTSVoiceStatus.SetMessage(string.Join("\n", lines));
         TTSVoiceCurrentPreviewButton.Disabled = false;
@@ -346,8 +361,8 @@ public sealed partial class HumanoidProfileEditor
 
     private string LocalizeTTSVoiceName(TTSVoicePrototype voice)
     {
-        return Loc.TryGetString(voice.Name, out var localized)
-            ? localized
+        return string.IsNullOrWhiteSpace(voice.Name)
+            ? voice.Speaker
             : FormattedMessage.RemoveMarkupPermissive(voice.Name);
     }
     // AltHub Space -> end (TTS)
