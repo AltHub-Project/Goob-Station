@@ -10,6 +10,7 @@ using Robust.Client.ResourceManagement;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.ContentPack;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 
@@ -45,7 +46,7 @@ public sealed class TTSSystem : EntitySystem
 
         _sawmill = Logger.GetSawmill("althub.tts.client");
         SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
-        SubscribeLocalEvent<AudioComponent, ComponentShutdown>(OnAudioShutdown);
+        SubscribeLocalEvent<AudioComponent, EntityTerminatingEvent>(OnAudioTerminating);
     }
 
     private void OnPlayTTS(PlayTTSEvent ev)
@@ -126,7 +127,7 @@ public sealed class TTSSystem : EntitySystem
         return audioParams;
     }
 
-    private void OnAudioShutdown(EntityUid uid, AudioComponent component, ComponentShutdown args)
+    private void OnAudioTerminating(EntityUid uid, AudioComponent component, ref EntityTerminatingEvent args)
     {
         UntrackPlayback(uid);
     }
