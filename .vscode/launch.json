@@ -89,6 +89,7 @@
             "type": "coreclr",
             "request": "launch",
             // AltHub Space -> start
+            "preLaunchTask": "build",
             "program": "${workspaceFolder}/bin/Content.Server/Content.Goobstation.Server.dll",
             // AltHub Space -> end
             "args": [],

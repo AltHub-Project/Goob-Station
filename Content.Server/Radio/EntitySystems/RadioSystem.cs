@@ -40,6 +40,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;  // goob - intermap transmitters
+using Content.Server._AltHub.TTS;
 using Content.Goobstation.Shared.Communications; // goob - intermap transmitters
 using Content.Goobstation.Shared.Loudspeaker.Events; // goob - loudspeakers
 using Content.Server.Administration.Logs;
@@ -232,6 +233,7 @@ public sealed partial class RadioSystem : EntitySystem
         RaiseLocalEvent(ref sendAttemptEv);
         RaiseLocalEvent(radioSource, ref sendAttemptEv);
         var canSend = !sendAttemptEv.Cancelled;
+        var recipients = new HashSet<ICommonSession>();
 
         var sourceMapId = Transform(radioSource).MapID;
         var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
@@ -265,14 +267,20 @@ public sealed partial class RadioSystem : EntitySystem
 
             // send the message
             RaiseLocalEvent(receiver, ref ev);
+            TryAddRecipientSession(receiver, recipients); // AltHub Space
         }
 
         if (name != Name(messageSource))
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Radio message from {ToPrettyString(messageSource):user} as {name} on {channel.LocalizedName}: {message}");
         else
-            _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Radio message from {ToPrettyString(messageSource):user} on {channel.LocalizedName}: {message}");
+        _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Radio message from {ToPrettyString(messageSource):user} on {channel.LocalizedName}: {message}");
 
         _replay.RecordServerMessage(msg); // Einstein Engines - Language
+        if (recipients.Count > 0)
+        {
+            var deliveredEv = new RadioSpeechDeliveredEvent(messageSource, message, channel, radioSource, language, recipients.ToArray());
+            RaiseLocalEvent(messageSource, deliveredEv, true);
+        }
         _messages.Remove(message);
     }
 
@@ -363,6 +371,22 @@ public sealed partial class RadioSystem : EntitySystem
     {
         return EntityQuery<TelecomTransmitterComponent, ApcPowerReceiverComponent, TransformComponent>()
             .Any(server => server.Item3.MapID == mapId && server.Item2.Powered);
+    }
+
+    private void TryAddRecipientSession(EntityUid receiver, HashSet<ICommonSession> recipients)
+    {
+        if (TryComp<ActorComponent>(receiver, out var actor))
+        {
+            recipients.Add(actor.PlayerSession);
+            return;
+        }
+
+        if (TryComp<HeadsetComponent>(receiver, out _))
+        {
+            var wearer = Transform(receiver).ParentUid;
+            if (TryComp<ActorComponent>(wearer, out var wearerActor))
+                recipients.Add(wearerActor.PlayerSession);
+        }
     }
     // goob end
 }

@@ -977,11 +977,6 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("age");
 
-                    b.Property<string>("BarkVoice")
-                        .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("bark_voice");
-
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("text")
@@ -1060,6 +1055,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("species");
+
+                    b.Property<string>("TTSVoice")
+                        .HasColumnType("text")
+                        .HasColumnName("tts_voice");
 
                     b.Property<float>("Width")
                         .HasColumnType("real")

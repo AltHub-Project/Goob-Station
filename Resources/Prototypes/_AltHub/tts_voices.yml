@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: Yaroslav Yudaev <ydaevy10@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+- type: ttsVoice
+  id: Planya
+  name: Planya
+  speaker: planya
+  description: Soft female voice for general speech.
+  source: /N/TTS
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: Arthas
+  name: Arthas
+  speaker: arthas
+  description: Deep male voice for general speech.
+  source: /N/TTS
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: john_henry_eden_fl3
+  name: john_henry_eden_fl3
+  speaker: john_henry_eden_fl3
+  description: asdasd
+  source: /N/TTS
+  roundStart: true
+  adminAnnounceRoundPool: true

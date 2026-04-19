@@ -52,6 +52,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.CCVar;
+using Content.Shared._AltHub.TTS;
 using Content.Shared.Dataset;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -59,7 +60,6 @@ using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
-using Content.Goobstation.Common.Barks; // Goob Station - Barks
 using Content.Shared.Traits;
 using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
@@ -132,8 +132,8 @@ namespace Content.Shared.Preferences
         [DataField]
         public ProtoId<SpeciesPrototype> Species { get; set; } = SharedHumanoidAppearanceSystem.DefaultSpecies;
 
-        [DataField] // Goob Station - Barks
-        public ProtoId<BarkPrototype> BarkVoice { get; set; } = SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
+        [DataField("ttsVoice")]
+        public ProtoId<TTSVoicePrototype>? TTSVoice { get; set; } // AltHub Space (TTS)
 
         [DataField]
         public int Age { get; set; } = 18;
@@ -206,7 +206,7 @@ namespace Content.Shared.Preferences
             HashSet<ProtoId<AntagPrototype>> antagPreferences,
             HashSet<ProtoId<TraitPrototype>> traitPreferences,
             Dictionary<string, RoleLoadout> loadouts,
-            ProtoId<BarkPrototype> barkVoice) // Goob Station - Barks
+            ProtoId<TTSVoicePrototype>? ttsVoice)
         {
             Name = name;
             FlavorText = flavortext;
@@ -223,7 +223,7 @@ namespace Content.Shared.Preferences
             _antagPreferences = antagPreferences;
             _traitPreferences = traitPreferences;
             _loadouts = loadouts;
-            BarkVoice = barkVoice; // Goob Station - Barks
+            TTSVoice = ttsVoice; // AltHub Space (TTS)
 
             var hasHighPrority = false;
             foreach (var (key, value) in _jobPriorities)
@@ -257,7 +257,7 @@ namespace Content.Shared.Preferences
                 new HashSet<ProtoId<AntagPrototype>>(other.AntagPreferences),
                 new HashSet<ProtoId<TraitPrototype>>(other.TraitPreferences),
                 new Dictionary<string, RoleLoadout>(other.Loadouts),
-                other.BarkVoice) // Goob Station - Barks
+                other.TTSVoice)
         {
         }
 
@@ -319,14 +319,6 @@ namespace Content.Shared.Preferences
                 width = random.NextFloat(speciesPrototype.MinWidth, speciesPrototype.MaxWidth); // Goobstation: port EE height/width sliders
             }
 
-            // Goob Station - Barks Start
-            var barkvoiceId = random.Pick(prototypeManager
-                .EnumeratePrototypes<BarkPrototype>()
-                .Where(o => o.RoundStart && (o.SpeciesWhitelist is null || o.SpeciesWhitelist.Contains(species)))
-                .ToArray()
-            );
-            //  Goob Station - Barks End
-
             var gender = Gender.Epicene;
 
             switch (sex)
@@ -352,7 +344,6 @@ namespace Content.Shared.Preferences
                 Width = width, // Goobstation: port EE height/width sliders
                 Height = height, // Goobstation: port EE height/width sliders
                 Appearance = HumanoidCharacterAppearance.Random(species, sex),
-                BarkVoice = barkvoiceId, // Goob Station - Barks
             };
         }
 
@@ -407,12 +398,12 @@ namespace Content.Shared.Preferences
             return new(this) { SpawnPriority = spawnPriority };
         }
 
-        // Goob Station - Barks Start
-        public HumanoidCharacterProfile WithBarkVoice(BarkPrototype barkVoice)
+        // AltHub Space -> start (TTS)
+        public HumanoidCharacterProfile WithTTSVoice(string? ttsVoice)
         {
-            return new(this) { BarkVoice = barkVoice };
+            return new(this) { TTSVoice = ttsVoice };
         }
-        // Goob Station - Barks End
+        // AltHub Space -> end (TTS)
 
         public HumanoidCharacterProfile WithJobPriorities(IEnumerable<KeyValuePair<ProtoId<JobPrototype>, JobPriority>> jobPriorities)
         {
@@ -575,7 +566,7 @@ namespace Content.Shared.Preferences
             if (Species != other.Species) return false;
             if (Height != other.Height) return false; // Goobstation: port EE height/width sliders
             if (Width != other.Width) return false; // Goobstation: port EE height/width sliders
-            if (BarkVoice != other.BarkVoice) return false; // Goob Station - Barks
+            if (TTSVoice != other.TTSVoice) return false; // AltHub Space (TTS)
             if (PreferenceUnavailable != other.PreferenceUnavailable) return false;
             if (SpawnPriority != other.SpawnPriority) return false;
             if (!_jobPriorities.SequenceEqual(other._jobPriorities)) return false;
@@ -730,6 +721,14 @@ namespace Content.Shared.Preferences
             Sex = sex;
             Gender = gender;
             Appearance = appearance;
+            // AltHub Space -> start (TTS)
+            if (TTSVoice != null &&
+                (!prototypeManager.TryIndex<TTSVoicePrototype>(TTSVoice, out var ttsVoice) ||
+                 (ttsVoice.SpeciesWhitelist != null && !ttsVoice.SpeciesWhitelist.Contains(Species))))
+            {
+                TTSVoice = null;
+            }
+            // AltHub Space -> end (TTS)
             SpawnPriority = spawnPriority;
 
             _jobPriorities.Clear();
@@ -850,7 +849,7 @@ namespace Content.Shared.Preferences
             hashCode.Add((int) Sex);
             hashCode.Add((int) Gender);
             hashCode.Add(Appearance);
-            hashCode.Add(BarkVoice); // Goob Station - Barks
+            hashCode.Add(TTSVoice); // AltHub Space (TTS)
             hashCode.Add((int) SpawnPriority);
             hashCode.Add((int) PreferenceUnavailable);
             return hashCode.ToHashCode();

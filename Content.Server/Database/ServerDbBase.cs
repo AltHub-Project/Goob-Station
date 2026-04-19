@@ -389,8 +389,6 @@ namespace Content.Server.Database
                 loadouts[role.RoleName] = loadout;
             }
 
-            var barkVoice = profile.BarkVoice ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice; // Goob Station - Barks
-
             return new HumanoidCharacterProfile(
                 profile.CharacterName,
                 profile.FlavorText,
@@ -416,7 +414,7 @@ namespace Content.Server.Database
                 antags.ToHashSet(),
                 traits.ToHashSet(),
                 loadouts,
-                barkVoice // Goob Station - Barks
+                profile.TTSVoice // AltHub Space (TTS)
             );
         }
 
@@ -469,7 +467,7 @@ namespace Content.Server.Database
                         .Select(t => new Trait { TraitName = t })
             );
 
-            profile.BarkVoice = humanoid.BarkVoice; // Goob Station - Barks
+            profile.TTSVoice = humanoid.TTSVoice; // AltHub Space (TTS)
 
             profile.Loadouts.Clear();
 

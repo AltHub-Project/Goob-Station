@@ -7,6 +7,7 @@ using Content.Goobstation.Shared.IntrinsicVoiceModulator; // Goobstation
 using Content.Goobstation.Shared.IntrinsicVoiceModulator.Components; // Goobstation
 using Content.Goobstation.Shared.IntrinsicVoiceModulator.Events; // Goobstation
 using Content.Shared.Administration.Logs;
+using Content.Shared._AltHub.TTS; // AltHub Space
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Chat.RadioIconsEvents; // Goobstation
@@ -36,6 +37,7 @@ public sealed partial class IntrinsicVoiceModulatorSystem : EntitySystem
         SubscribeLocalEvent<IntrinsicVoiceModulatorComponent, ComponentInit>(OnComponentInit);
 
         SubscribeLocalEvent<IntrinsicVoiceModulatorComponent, TransformSpeakerNameEvent>(OnTransformSpeakerName);
+        SubscribeLocalEvent<IntrinsicVoiceModulatorComponent, TransformSpeakerTTSVoiceEvent>(OnTransformSpeakerTTSVoice); // AltHub Space (TTS)
         SubscribeLocalEvent<IntrinsicVoiceModulatorComponent, TransformSpeakerJobIconEvent>(OnTransformJobIcon);
         SubscribeLocalEvent<IntrinsicVoiceModulatorComponent, OpenIntrinsicVoiceModulatorMenuEvent>(OnOpenVoiceModulatorMenu);
 
@@ -65,6 +67,14 @@ public sealed partial class IntrinsicVoiceModulatorSystem : EntitySystem
         if (ent.Comp.SpeechVerbProtoId is { } speechVerb)
             args.SpeechVerb = speechVerb;
     }
+
+    // AltHub Space -> start (TTS)
+    private void OnTransformSpeakerTTSVoice(Entity<IntrinsicVoiceModulatorComponent> ent, ref TransformSpeakerTTSVoiceEvent args)
+    {
+        if (ent.Comp.TTSVoiceId is { } ttsVoiceId)
+            args.VoiceId = ttsVoiceId;
+    }
+    // AltHub Space -> end (TTS)
 
     private void OnTransformJobIcon(Entity<IntrinsicVoiceModulatorComponent> ent, ref TransformSpeakerJobIconEvent args)
     {

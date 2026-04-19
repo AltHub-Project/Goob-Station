@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Speech;
+using Content.Shared._AltHub.TTS; // AltHub Space
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 
@@ -17,6 +18,9 @@ public sealed partial class IntrinsicVoiceModulatorComponent : Component
 
     [DataField]
     public ProtoId<SpeechVerbPrototype>? SpeechVerbProtoId;
+
+    [DataField("ttsVoiceId")]
+    public ProtoId<TTSVoicePrototype>? TTSVoiceId; // AltHub Space (TTS)
 
     [DataField]
     public ProtoId<JobIconPrototype>? JobIconProtoId;

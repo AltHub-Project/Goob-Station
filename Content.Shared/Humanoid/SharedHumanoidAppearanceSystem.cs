@@ -35,6 +35,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 using Content.Shared.CCVar;
+using Content.Shared._AltHub.TTS;
 using Content.Shared.Decals;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Markings;
@@ -44,7 +45,6 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Preferences;
 using Content.Shared._EinsteinEngines.HeightAdjust;
-using Content.Goobstation.Common.Barks; // Goob Station - Barks
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects.Components.Localization;
@@ -80,7 +80,6 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     [Dependency] private readonly SharedIdentitySystem _identity = default!;
 
     public static readonly ProtoId<SpeciesPrototype> DefaultSpecies = "Human";
-    public static readonly ProtoId<BarkPrototype> DefaultBarkVoice = "Alto"; // Goob Station - Barks
 
     public override void Initialize()
     {
@@ -204,6 +203,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         targetHumanoid.Age = sourceHumanoid.Age;
         targetHumanoid.Height = sourceHumanoid.Height; // Goobstation: port EE height/width sliders
         targetHumanoid.Width = sourceHumanoid.Width; // Goobstation: port EE height/width sliders
+        targetHumanoid.TTSVoice = sourceHumanoid.TTSVoice; // AltHub Space (TTS)
         SetSex(target, sourceHumanoid.Sex, false, targetHumanoid);
         targetHumanoid.CustomBaseLayers = new(sourceHumanoid.CustomBaseLayers);
         targetHumanoid.MarkingSet = new(sourceHumanoid.MarkingSet);
@@ -567,7 +567,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         EnsureDefaultMarkings(uid, humanoid);
-        SetBarkVoice(uid, profile.BarkVoice, humanoid); // Goob Station - Barks
+        SetTTSVoice(uid, profile.TTSVoice, humanoid); // AltHub Space (TTS)
 
         humanoid.Gender = profile.Gender;
         if (TryComp<GrammarComponent>(uid, out var grammar))
@@ -659,34 +659,33 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
             Dirty(uid, humanoid);
     }
 
-    //  Goob Station - Barks Start
-    #region Goob - Barks
-    public void SetBarkVoice(EntityUid uid, string? barkvoiceId, HumanoidAppearanceComponent humanoid)
+    // AltHub Space -> start (TTS)
+    public void SetTTSVoice(EntityUid uid, string? voiceId, HumanoidAppearanceComponent humanoid)
     {
-        var voicePrototypeId = DefaultBarkVoice;
+        ProtoId<TTSVoicePrototype>? resolvedVoice = null;
 
-        if (barkvoiceId != null &&
-            _proto.TryIndex<BarkPrototype>(barkvoiceId, out var bark) &&
-            (bark.SpeciesWhitelist == null || bark.SpeciesWhitelist.Contains(humanoid.Species)))
+        if (voiceId != null &&
+            _proto.TryIndex<TTSVoicePrototype>(voiceId, out var voice) &&
+            (voice.SpeciesWhitelist == null || voice.SpeciesWhitelist.Contains(humanoid.Species)))
         {
-            voicePrototypeId = barkvoiceId;
-        }
-        else
-        {
-            var barks = _proto.EnumeratePrototypes<BarkPrototype>()
-                .Where(o => o.RoundStart && (o.SpeciesWhitelist is null || o.SpeciesWhitelist.Contains(humanoid.Species)))
-                .ToList();
-
-            voicePrototypeId = _proto.Index(barks.Count > 0 ? barks[0] : DefaultBarkVoice);
+            resolvedVoice = voice.ID;
         }
 
-        EnsureComp<SpeechSynthesisComponent>(uid, out var comp);
-        comp.VoicePrototypeId = voicePrototypeId;
-        humanoid.BarkVoice = voicePrototypeId;
+        humanoid.TTSVoice = resolvedVoice;
+
+        if (resolvedVoice == null)
+        {
+            if (TryComp<TTSComponent>(uid, out var existing))
+                RemCompDeferred(uid, existing);
+
+            return;
+        }
+
+        var comp = EnsureComp<TTSComponent>(uid);
+        comp.VoicePrototypeId = resolvedVoice;
         Dirty(uid, comp);
     }
-    #endregion
-    // Goob Station - Barks End
+    // AltHub Space -> end (TTS)
 
     /// <summary>
     /// Takes ID of the species prototype, returns UI-friendly name of the species.

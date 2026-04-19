@@ -34,6 +34,7 @@ using Content.Shared.Popups;
 using Content.Shared.Preferences;
 using Content.Shared.Roles.Jobs; // Goobstation
 using Content.Shared.Speech;
+using Content.Shared._AltHub.TTS; // AltHub Space
 using Content.Shared.VoiceMask;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
@@ -56,6 +57,7 @@ public sealed partial class VoiceMaskSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<VoiceMaskComponent, InventoryRelayedEvent<TransformSpeakerNameEvent>>(OnTransformSpeakerName);
+        SubscribeLocalEvent<VoiceMaskComponent, InventoryRelayedEvent<TransformSpeakerTTSVoiceEvent>>(OnTransformSpeakerTTSVoice); // AltHub Space (TTS)
         SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskChangeNameMessage>(OnChangeName);
         SubscribeLocalEvent<VoiceMaskComponent, VoiceMaskChangeVerbMessage>(OnChangeVerb);
         SubscribeLocalEvent<VoiceMaskComponent, ClothingGotEquippedEvent>(OnEquip);
@@ -69,6 +71,13 @@ public sealed partial class VoiceMaskSystem : EntitySystem
         args.Args.VoiceName = GetCurrentVoiceName(entity);
         args.Args.SpeechVerb = entity.Comp.VoiceMaskSpeechVerb ?? args.Args.SpeechVerb;
     }
+
+    // AltHub Space -> start (TTS)
+    private void OnTransformSpeakerTTSVoice(Entity<VoiceMaskComponent> entity, ref InventoryRelayedEvent<TransformSpeakerTTSVoiceEvent> args)
+    {
+        args.Args.VoiceId = entity.Comp.VoiceMaskTTSVoice;
+    }
+    // AltHub Space -> end (TTS)
 
     #region User inputs from UI
     private void OnChangeVerb(Entity<VoiceMaskComponent> entity, ref VoiceMaskChangeVerbMessage msg)

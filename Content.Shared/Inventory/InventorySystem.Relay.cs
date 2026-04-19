@@ -58,6 +58,7 @@
 
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
+using Content.Shared._AltHub.TTS;
 using Content.Shared.Chat;
 using Content.Shared.Chat.RadioIconsEvents; // Goobstation
 using Content.Shared.Chemistry;
@@ -107,6 +108,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, RefreshNameModifiersEvent>(RelayInventoryEvent);
 
         SubscribeLocalEvent<InventoryComponent, TransformSpeakerNameEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, TransformSpeakerTTSVoiceEvent>(RelayInventoryEvent); // AltHub Space (TTS)
         SubscribeLocalEvent<InventoryComponent, TransformSpeakerJobIconEvent>(RelayInventoryEvent); // GabyStation -> Radio icons
         SubscribeLocalEvent<InventoryComponent, SelfBeforeHyposprayInjectsEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, TargetBeforeHyposprayInjectsEvent>(RelayInventoryEvent);

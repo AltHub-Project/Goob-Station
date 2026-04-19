@@ -922,11 +922,6 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("INTEGER")
                         .HasColumnName("age");
 
-                    b.Property<string>("BarkVoice")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasColumnName("bark_voice");
-
                     b.Property<string>("CharacterName")
                         .IsRequired()
                         .HasColumnType("TEXT")
@@ -1005,6 +1000,10 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("species");
+
+                    b.Property<string>("TTSVoice")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("tts_voice");
 
                     b.Property<float>("Width")
                         .HasColumnType("REAL")

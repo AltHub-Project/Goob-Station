@@ -744,7 +744,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         var wrappedObfuscated = WrapPublicMessage(source, name, obfuscated, language: language, colorOverride);
         // Einstein Engines - Language end
 
-        SendInVoiceRange(
+        var recipients = SendInVoiceRange(
             ChatChannel.Local,
             name,
             message,
@@ -757,7 +757,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             checkLOS: typeLOS // Floofstation - Check Line-Of-Sight
             );
 
-        var ev = new EntitySpokeEvent(source, message, null, false, language); // Einstein Engines - Language
+        var ev = new EntitySpokeEvent(source, message, null, false, language, recipients); // Einstein Engines - Language
         RaiseLocalEvent(source, ev, true);
 
         // To avoid logging any messages sent by entities that are not players, like vendors, cloning, etc.
@@ -833,6 +833,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         (!CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Parent.Name == "en")
         || (CultureInfo.CurrentCulture.IsNeutralCulture && CultureInfo.CurrentCulture.Name == "en")); // Einstein Engines - Language
 
+        var recipients = new Dictionary<ICommonSession, ICChatRecipientData>();
         foreach (var (session, data) in GetRecipients(source, WhisperMuffledRange))
         {
             if (session.AttachedEntity is not { Valid: true } listener)
@@ -880,13 +881,14 @@ public sealed partial class ChatSystem : SharedChatSystem
             }
 
             _chatManager.ChatMessageToOne(ChatChannel.Whisper, result, wrappedMessage, source, false, session.Channel);
+            recipients[session] = data; // AltHub Space
         }
 
         var replayWrap = WrapWhisperMessage(source, "chat-manager-entity-whisper-wrap-message", name, message, language, colorOverride);
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, replayWrap, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
         // Einstein Engines - Languages end
 
-        var ev = new EntitySpokeEvent(source, message, channel, true, language); // Einstein Engines - Languages
+        var ev = new EntitySpokeEvent(source, message, channel, true, language, recipients); // Einstein Engines - Languages
         RaiseLocalEvent(source, ev, true);
         if (!hideLog)
             if (originalMessage == message)
@@ -1077,7 +1079,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     /// <summary>
     ///     Sends a chat message to the given players in range of the source entity.
     /// </summary>
-    private void SendInVoiceRange(
+    private Dictionary<ICommonSession, ICChatRecipientData> SendInVoiceRange(
         ChatChannel channel,
         string name,
         string message,
@@ -1092,6 +1094,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         )
     {
         var language = languageOverride ?? _language.GetLanguage(source); // Einstein Engines - Language
+        var deliveredRecipients = new Dictionary<ICommonSession, ICChatRecipientData>();
 
         foreach (var (session, data) in GetRecipients(source, VoiceRange))
         {
@@ -1122,10 +1125,12 @@ public sealed partial class ChatSystem : SharedChatSystem
                 _chatManager.ChatMessageToOne(channel, message, wrappedMessage, source, entHideChat, session.Channel, author: author);
             else
                 _chatManager.ChatMessageToOne(channel, obfuscated, obfuscatedWrappedMessage, source, entHideChat, session.Channel, author: author);
+            deliveredRecipients[session] = data; // AltHub Space
             // Einstein Engines - Language end
         }
 
         _replay.RecordServerMessage(new ChatMessage(channel, message, wrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
+        return deliveredRecipients;
     }
 
     /// <summary>
@@ -1452,6 +1457,7 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     public readonly string Message;
     public readonly bool IsWhisper;
     public readonly LanguagePrototype Language;
+    public readonly IReadOnlyDictionary<ICommonSession, ChatSystem.ICChatRecipientData> Recipients;
 
     /// <summary>
     ///     If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
@@ -1459,13 +1465,20 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     /// </summary>
     public RadioChannelPrototype? Channel;
 
-    public EntitySpokeEvent(EntityUid source, string message, RadioChannelPrototype? channel, bool isWhisper, LanguagePrototype language) // Einstein Engines - Language
+    public EntitySpokeEvent(
+        EntityUid source,
+        string message,
+        RadioChannelPrototype? channel,
+        bool isWhisper,
+        LanguagePrototype language,
+        IReadOnlyDictionary<ICommonSession, ChatSystem.ICChatRecipientData> recipients) // Einstein Engines - Language
     {
         Source = source;
         Message = message;
         Channel = channel;
         IsWhisper = isWhisper;
         Language = language;
+        Recipients = recipients;
     }
 }
 

@@ -9,6 +9,7 @@
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Eui;
+using Content.Shared._AltHub.TTS; // AltHub Space
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Administration
@@ -22,6 +23,14 @@ namespace Content.Shared.Administration
     [Serializable, NetSerializable]
     public sealed class AdminAnnounceEuiState : EuiStateBase
     {
+        // AltHub Space -> start (TTS)
+        public string? DefaultTTSVoiceId { get; }
+
+        public AdminAnnounceEuiState(string? defaultTTSVoiceId = null)
+        {
+            DefaultTTSVoiceId = defaultTTSVoiceId;
+        }
+        // AltHub Space -> end (TTS)
     }
 
     public static class AdminAnnounceEuiMsg
@@ -33,6 +42,8 @@ namespace Content.Shared.Administration
             public string Announcer = default!;
             public string Announcement = default!;
             public AdminAnnounceType AnnounceType;
+            public bool UseTTS; // AltHub Space (TTS)
+            public string? TTSVoiceId; // AltHub Space (TTS)
         }
     }
 }

@@ -486,8 +486,8 @@
     penetrateDamage: 75 # It's harder to kill iron golem
     damagePenalty: 0.25
   - type: MiningPoints # goobstation borgs can claim mining points
-  - type: SpeechSynthesis # Corvax-Frontier-Barks
-    voice: Borg
+  - type: TTS
+    voice: Arthas # AltHub Space (TTS)
 
 - type: entity
   abstract: true
@@ -623,8 +623,8 @@
   - type: ExplosionResistance #Goobstation - Ion Damage
     damageCoefficient: 0.5
   - type: FlashImmunity
-  - type: SpeechSynthesis # Corvax-Frontier-Barks
-    voice: BorgSyndie
+  - type: TTS
+    voice: Planya # AltHub Space (TTS)
 
 - type: entity
   id: BaseBorgChassisDerelict

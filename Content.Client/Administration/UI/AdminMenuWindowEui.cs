@@ -34,8 +34,18 @@ namespace Content.Client.Administration.UI
                 Announcer =  _window.Announcer.Text,
                 AnnounceType =  (AdminAnnounceType) (_window.AnnounceMethod.SelectedMetadata ?? AdminAnnounceType.Station),
                 CloseAfter = !_window.KeepWindowOpen.Pressed,
+                UseTTS = _window.EnableTTS.Pressed, // AltHub Space (TTS)
+                TTSVoiceId = _window.TTSVoiceButton.SelectedMetadata as string, // AltHub Space (TTS)
             });
 
+        }
+
+        public override void HandleState(EuiStateBase state)
+        {
+            base.HandleState(state);
+
+            if (state is AdminAnnounceEuiState typedState)
+                _window.SetState(typedState); // AltHub Space (TTS)
         }
 
         public override void Opened()

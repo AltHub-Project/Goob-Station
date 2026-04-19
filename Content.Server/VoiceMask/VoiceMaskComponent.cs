@@ -13,6 +13,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Speech;
+using Content.Shared._AltHub.TTS; // AltHub Space
 using Content.Shared.StatusIcon; // Goobstation
 using Robust.Shared.Prototypes;
 
@@ -40,6 +41,14 @@ public sealed partial class VoiceMaskComponent : Component
     /// </summary>
     [DataField]
     public ProtoId<SpeechVerbPrototype>? VoiceMaskSpeechVerb;
+
+    // AltHub Space -> start (TTS)
+    /// <summary>
+    ///     Optional TTS voice override applied while this mask relays speech.
+    /// </summary>
+    [DataField]
+    public ProtoId<TTSVoicePrototype>? VoiceMaskTTSVoice;
+    // AltHub Space -> end (TTS)
 
     /// <summary>
     ///     The action that gets displayed when the voice mask is equipped.

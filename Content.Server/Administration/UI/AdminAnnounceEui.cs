@@ -13,6 +13,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Managers;
+using Content.Server._AltHub.TTS; // AltHub Space
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.EUI;
@@ -26,11 +27,13 @@ namespace Content.Server.Administration.UI
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly IChatManager _chatManager = default!;
         private readonly ChatSystem _chatSystem;
+        private readonly TTSSystem _ttsSystem; // AltHub Space
 
         public AdminAnnounceEui()
         {
             IoCManager.InjectDependencies(this);
             _chatSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<ChatSystem>();
+            _ttsSystem = IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<TTSSystem>(); // AltHub Space
         }
 
         public override void Opened()
@@ -40,7 +43,7 @@ namespace Content.Server.Administration.UI
 
         public override EuiStateBase GetNewState()
         {
-            return new AdminAnnounceEuiState();
+            return new AdminAnnounceEuiState(_ttsSystem.RoundAdminVoiceId); // AltHub Space (TTS)
         }
 
         public override void HandleMessage(EuiMessageBase msg)
@@ -66,6 +69,13 @@ namespace Content.Server.Administration.UI
                             _chatSystem.DispatchGlobalAnnouncement(doAnnounce.Announcement, doAnnounce.Announcer, colorOverride: Color.Gold);
                             break;
                     }
+                    // AltHub Space -> start (TTS)
+                    _ttsSystem.QueueAdminAnnouncement(
+                        doAnnounce.Announcement,
+                        doAnnounce.AnnounceType,
+                        doAnnounce.UseTTS,
+                        doAnnounce.TTSVoiceId);
+                    // AltHub Space -> end (TTS)
 
                     StateDirty();
 
