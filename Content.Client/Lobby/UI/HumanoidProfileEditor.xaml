@@ -129,14 +129,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                                     <Label Name="WeightLabel" />
                                 </BoxContainer>
                                 <!-- end Goobstation: port EE height/width sliders -->
-                                <!-- AltHub Space -> start (TTS) -->
-                                <BoxContainer HorizontalExpand="True" Name="TTSContainer">
-                                    <Label Text="{Loc 'humanoid-profile-editor-voice-label'}" />
-                                    <Control HorizontalExpand="True"/>
-                                    <OptionButton Name="TTSVoiceButton" HorizontalAlignment="Right" />
-                                    <Button Name="TTSVoicePlayButton" Text="{Loc 'humanoid-profile-editor-voice-play'}" MaxWidth="80" />
-                                </BoxContainer>
-                                <!-- AltHub Space -> end (TTS) -->
                             </BoxContainer>
                             <!-- Skin -->
                             <BoxContainer Margin="10" HorizontalExpand="True" Orientation="Vertical">
@@ -156,6 +148,35 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                             </BoxContainer>
                         </BoxContainer>
                     </ScrollContainer>
+                </BoxContainer>
+                <BoxContainer Orientation="Vertical">
+                    <!-- AltHub Space -> start (TTS) -->
+                    <BoxContainer Orientation="Vertical" Margin="10">
+                        <ui:HighlightedContainer>
+                            <BoxContainer Orientation="Vertical" Margin="8" SeparationOverride="6">
+                                <RichTextLabel Name="TTSVoiceStatus" />
+                                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" SeparationOverride="6">
+                                    <LineEdit Name="TTSVoiceSearch" PlaceHolder="{Loc 'humanoid-profile-editor-voice-search-placeholder'}" HorizontalExpand="True" />
+                                    <Button Name="TTSVoiceSearchClearButton" Text="{Loc 'humanoid-profile-editor-voice-search-clear'}" />
+                                </BoxContainer>
+                                <BoxContainer Orientation="Horizontal" HorizontalExpand="True" SeparationOverride="6">
+                                    <Label Name="TTSVoiceGenderLabel" Text="{Loc 'humanoid-profile-editor-voice-gender-filter'}" />
+                                    <OptionButton Name="TTSVoiceGenderButton" />
+                                    <Control HorizontalExpand="True" />
+                                    <Button Name="TTSVoiceCurrentPreviewButton" Text="{Loc 'humanoid-profile-editor-voice-play'}" />
+                                    <Button Name="TTSVoiceClearButton" Text="{Loc 'humanoid-profile-editor-voice-none'}" />
+                                </BoxContainer>
+                            </BoxContainer>
+                        </ui:HighlightedContainer>
+                        <Control MinHeight="8" />
+                        <ScrollContainer VerticalExpand="True">
+                            <BoxContainer Orientation="Vertical">
+                                <Label Name="TTSVoiceEmptyLabel" Visible="False" Text="{Loc 'humanoid-profile-editor-voice-empty'}" Margin="4" />
+                                <BoxContainer Name="TTSVoiceCategories" Orientation="Vertical" SeparationOverride="6" />
+                            </BoxContainer>
+                        </ScrollContainer>
+                    </BoxContainer>
+                    <!-- AltHub Space -> end (TTS) -->
                 </BoxContainer>
                 <BoxContainer Orientation="Vertical">
                     <!-- Jobs -->

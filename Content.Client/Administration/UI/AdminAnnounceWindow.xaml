@@ -24,10 +24,20 @@ SPDX-License-Identifier: MIT
         <TextEdit Name="Announcement" Access="Public" VerticalExpand="True" MinHeight="100" />
         <!-- AltHub Space -> start (TTS) -->
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <LineEdit Name="TTSVoiceSearch" Access="Public" PlaceHolder="{Loc 'admin-announce-tts-voice-search-placeholder'}" HorizontalExpand="True" />
+            <Button Name="ClearTTSVoiceSearch" Access="Public" Text="{Loc 'admin-announce-tts-voice-search-clear'}" />
+        </BoxContainer>
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
             <CheckBox Name="EnableTTS" Access="Public" Text="{Loc 'admin-announce-tts-enable'}" />
             <Control HorizontalExpand="True" />
             <Label Text="{Loc 'admin-announce-tts-voice'}" />
             <OptionButton Name="TTSVoiceButton" Access="Public" MinWidth="180" />
+        </BoxContainer>
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+            <CheckBox Name="EnableTTSEffect" Access="Public" Text="{Loc 'admin-announce-tts-effect-enable'}" />
+            <Control HorizontalExpand="True" />
+            <Label Text="{Loc 'admin-announce-tts-effect'}" />
+            <OptionButton Name="TTSEffectButton" Access="Public" MinWidth="180" />
         </BoxContainer>
         <!-- AltHub Space -> end (TTS) -->
 

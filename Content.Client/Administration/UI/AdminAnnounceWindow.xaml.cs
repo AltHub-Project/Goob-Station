@@ -28,6 +28,7 @@ namespace Content.Client.Administration.UI
     {
         [Dependency] private readonly ILocalizationManager _localization = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // AltHub Space
+        private string? _defaultTTSVoiceId; // AltHub Space (TTS)
 
         public AdminAnnounceWindow()
         {
@@ -42,19 +43,43 @@ namespace Content.Client.Administration.UI
             AnnounceMethod.OnItemSelected += AnnounceMethodOnOnItemSelected;
             Announcement.OnKeyBindUp += AnnouncementOnOnTextChanged;
             // AltHub Space -> start (TTS)
-            EnableTTS.OnToggled += _ => UpdateTTSControls();
+            EnableTTS.OnToggled += _ =>
+            {
+                UpdateTTSControls();
+                UpdateAnnounceButton();
+            };
+            EnableTTSEffect.OnToggled += _ => UpdateTTSControls();
+            TTSVoiceSearch.OnTextChanged += _ =>
+            {
+                PopulateTTSVoices();
+                UpdateTTSControls();
+                UpdateAnnounceButton();
+            };
+            ClearTTSVoiceSearch.OnPressed += _ =>
+            {
+                TTSVoiceSearch.Clear();
+                PopulateTTSVoices();
+                UpdateTTSControls();
+                UpdateAnnounceButton();
+            };
             TTSVoiceButton.OnItemSelected += args =>
             {
                 TTSVoiceButton.SelectId(args.Id);
+                UpdateAnnounceButton();
+            };
+            TTSEffectButton.OnItemSelected += args =>
+            {
+                TTSEffectButton.SelectId(args.Id);
             };
             PopulateTTSVoices();
+            PopulateTTSEffects();
             UpdateTTSControls();
             // AltHub Space -> end (TTS)
         }
 
         private void AnnouncementOnOnTextChanged(GUIBoundKeyEventArgs args)
         {
-            AnnounceButton.Disabled = Rope.Collapse(Announcement.TextRope).TrimStart() == "";
+            UpdateAnnounceButton();
         }
 
         private void AnnounceMethodOnOnItemSelected(OptionButton.ItemSelectedEventArgs args)
@@ -66,44 +91,118 @@ namespace Content.Client.Administration.UI
         // AltHub Space -> start (TTS)
         public void SetState(AdminAnnounceEuiState state)
         {
-            if (state.DefaultTTSVoiceId == null)
-                return;
-
-            for (var id = 0; id < TTSVoiceButton.ItemCount; id++)
-            {
-                if (!Equals(TTSVoiceButton.GetItemMetadata(id), state.DefaultTTSVoiceId))
-                    continue;
-
-                TTSVoiceButton.SelectId(id);
-                break;
-            }
+            _defaultTTSVoiceId = state.DefaultTTSVoiceId;
+            PopulateTTSVoices(_defaultTTSVoiceId);
+            UpdateTTSControls();
+            UpdateAnnounceButton();
         }
 
-        private void PopulateTTSVoices()
+        private void PopulateTTSVoices(string? preferredVoiceId = null)
         {
+            var currentVoiceId = TTSVoiceButton.SelectedMetadata as string;
             TTSVoiceButton.Clear();
 
             var voices = _prototypeManager
                 .EnumeratePrototypes<TTSVoicePrototype>()
                 .ToList();
 
-            voices.Sort(static (left, right) => string.Compare(left.Name, right.Name, System.StringComparison.OrdinalIgnoreCase));
+            voices.Sort(static (left, right) =>
+            {
+                var nameCompare = string.Compare(left.Name, right.Name, System.StringComparison.OrdinalIgnoreCase);
+                if (nameCompare != 0)
+                    return nameCompare;
+
+                return string.Compare(left.Source, right.Source, System.StringComparison.OrdinalIgnoreCase);
+            });
+
+            preferredVoiceId ??= currentVoiceId ?? _defaultTTSVoiceId;
+            var selectedId = -1;
+            var search = NormalizeTTSVoiceSearch(TTSVoiceSearch.Text);
 
             foreach (var voice in voices)
             {
+                if (!MatchesTTSVoiceSearch(voice, search))
+                    continue;
+
                 var id = TTSVoiceButton.ItemCount;
-                TTSVoiceButton.AddItem(voice.Name);
+                TTSVoiceButton.AddItem(BuildTTSVoiceLabel(voice));
                 TTSVoiceButton.SetItemMetadata(id, voice.ID);
+
+                if (voice.ID == preferredVoiceId)
+                    selectedId = id;
             }
 
             if (TTSVoiceButton.ItemCount > 0)
-                TTSVoiceButton.SelectId(0);
+                TTSVoiceButton.SelectId(selectedId >= 0 ? selectedId : 0);
+        }
+
+        private void PopulateTTSEffects()
+        {
+            TTSEffectButton.Clear();
+
+            foreach (var effectId in TTSEffects.Ordered)
+            {
+                var id = TTSEffectButton.ItemCount;
+                TTSEffectButton.AddItem(_localization.GetString($"admin-announce-tts-effect-option-{effectId}"));
+                TTSEffectButton.SetItemMetadata(id, effectId);
+            }
+
+            SelectDefaultTTSEffect();
+        }
+
+        private void SelectDefaultTTSEffect()
+        {
+            for (var id = 0; id < TTSEffectButton.ItemCount; id++)
+            {
+                if (!Equals(TTSEffectButton.GetItemMetadata(id), TTSEffects.Announce))
+                    continue;
+
+                TTSEffectButton.SelectId(id);
+                return;
+            }
+
+            if (TTSEffectButton.ItemCount > 0)
+                TTSEffectButton.SelectId(0);
         }
 
         private void UpdateTTSControls()
         {
-            var disabled = !EnableTTS.Pressed || TTSVoiceButton.ItemCount == 0;
-            TTSVoiceButton.Disabled = disabled;
+            var ttsDisabled = !EnableTTS.Pressed;
+            TTSVoiceSearch.Editable = !ttsDisabled;
+            ClearTTSVoiceSearch.Disabled = ttsDisabled || string.IsNullOrWhiteSpace(TTSVoiceSearch.Text);
+            TTSVoiceButton.Disabled = ttsDisabled || TTSVoiceButton.ItemCount == 0;
+            EnableTTSEffect.Disabled = ttsDisabled || TTSEffectButton.ItemCount == 0;
+            TTSEffectButton.Disabled = ttsDisabled || !EnableTTSEffect.Pressed || TTSEffectButton.ItemCount == 0;
+        }
+
+        private void UpdateAnnounceButton()
+        {
+            var hasAnnouncement = Rope.Collapse(Announcement.TextRope).TrimStart() != "";
+            var missingTTSVoice = EnableTTS.Pressed && TTSVoiceButton.ItemCount == 0;
+            AnnounceButton.Disabled = !hasAnnouncement || missingTTSVoice;
+        }
+
+        private bool MatchesTTSVoiceSearch(TTSVoicePrototype voice, string search)
+        {
+            if (string.IsNullOrEmpty(search))
+                return true;
+
+            return NormalizeTTSVoiceSearch($"{voice.Name}\n{voice.Source}\n{voice.Speaker}\n{voice.Description}")
+                .Contains(search, System.StringComparison.Ordinal);
+        }
+
+        private string BuildTTSVoiceLabel(TTSVoicePrototype voice)
+        {
+            return string.IsNullOrWhiteSpace(voice.Source)
+                ? voice.Name
+                : $"{voice.Name} · {voice.Source}";
+        }
+
+        private static string NormalizeTTSVoiceSearch(string? value)
+        {
+            return string.IsNullOrWhiteSpace(value)
+                ? string.Empty
+                : value.Trim().ToLowerInvariant();
         }
         // AltHub Space -> end (TTS)
     }

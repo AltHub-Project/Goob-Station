@@ -105,7 +105,9 @@ public sealed class TTSSystem : EntitySystem
         string text,
         AdminAnnounceType announceType,
         bool useTts,
-        string? requestedVoiceId)
+        string? requestedVoiceId,
+        bool useTTSEffect,
+        string? requestedTTSEffectId)
     {
         if (!useTts || !_enabled)
             return;
@@ -121,13 +123,18 @@ public sealed class TTSSystem : EntitySystem
         var delay = announceType == AdminAnnounceType.Station
             ? _audio.GetAudioLength(_audio.ResolveSound(new SoundPathSpecifier(ChatSystem.DefaultAnnouncementSound)))
             : TimeSpan.Zero;
+        var effectId = useTTSEffect
+            ? ResolveAnnouncementEffect(requestedTTSEffectId)
+            : null;
 
         RunDetached(() => QueueAnnouncementAsync(
             recipients,
             text,
             voice.Speaker,
             delay,
-            _roundCts.Token));
+            effectId,
+            applyCommunicationPreset: effectId == null,
+            token: _roundCts.Token));
     }
 
     private void OnRoundStarting(RoundStartingEvent ev)
@@ -182,7 +189,8 @@ public sealed class TTSSystem : EntitySystem
                 message,
                 TTSRequestPriority.Speech,
                 staleness,
-                token);
+                effectId: null,
+                cancellationToken: token);
 
             if (data == null || token.IsCancellationRequested)
                 return;
@@ -220,7 +228,8 @@ public sealed class TTSSystem : EntitySystem
                 message,
                 TTSRequestPriority.Radio,
                 staleness,
-                token);
+                effectId: null,
+                cancellationToken: token);
 
             if (data == null || token.IsCancellationRequested)
                 return;
@@ -231,7 +240,7 @@ public sealed class TTSSystem : EntitySystem
                     return;
 
                 RaiseNetworkEvent(
-                    new PlayTTSEvent(data, null, TTSPlaybackKind.Radio),
+                    new PlayTTSEvent(data, null, TTSPlaybackKind.Radio, applyCommunicationPreset: true),
                     Filter.Empty().AddPlayers(recipients));
             });
         });
@@ -266,7 +275,14 @@ public sealed class TTSSystem : EntitySystem
         var text = ev.Text;
         var speaker = voice.Speaker;
         var token = _roundCts.Token;
-        RunDetached(() => QueueAnnouncementAsync(recipients, text, speaker, delay, token));
+        RunDetached(() => QueueAnnouncementAsync(
+            recipients,
+            text,
+            speaker,
+            delay,
+            TTSEffects.Announce,
+            applyCommunicationPreset: false,
+            token: token));
     }
 
     private async Task QueueAnnouncementAsync(
@@ -274,6 +290,8 @@ public sealed class TTSSystem : EntitySystem
         string text,
         string speaker,
         TimeSpan delay,
+        string? effectId,
+        bool applyCommunicationPreset,
         CancellationToken token)
     {
         var synthesisTask = _provider.SynthesizeAsync(
@@ -281,6 +299,7 @@ public sealed class TTSSystem : EntitySystem
             text,
             TTSRequestPriority.Announcement,
             null,
+            effectId,
             token);
 
         if (delay > TimeSpan.Zero)
@@ -296,7 +315,7 @@ public sealed class TTSSystem : EntitySystem
                 return;
 
             RaiseNetworkEvent(
-                new PlayTTSEvent(data, null, TTSPlaybackKind.Announcement),
+                new PlayTTSEvent(data, null, TTSPlaybackKind.Announcement, applyCommunicationPreset: applyCommunicationPreset),
                 Filter.Empty().AddPlayers(recipients));
         });
     }
@@ -339,6 +358,13 @@ public sealed class TTSSystem : EntitySystem
         }
 
         return null;
+    }
+
+    private static string? ResolveAnnouncementEffect(string? requestedEffectId)
+    {
+        return TTSEffects.IsSupported(requestedEffectId)
+            ? requestedEffectId
+            : null;
     }
 
     private TTSProviderOptions GetProviderOptions()

@@ -74,7 +74,9 @@ namespace Content.Server.Administration.UI
                         doAnnounce.Announcement,
                         doAnnounce.AnnounceType,
                         doAnnounce.UseTTS,
-                        doAnnounce.TTSVoiceId);
+                        doAnnounce.TTSVoiceId,
+                        doAnnounce.UseTTSEffect,
+                        doAnnounce.TTSEffectId);
                     // AltHub Space -> end (TTS)
 
                     StateDirty();

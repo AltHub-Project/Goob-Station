@@ -1,30 +1,2754 @@
 # SPDX-FileCopyrightText: Yaroslav Yudaev <ydaevy10@gmail.com>
 #
 # SPDX-License-Identifier: MIT
+# Generated from https://nttsfuckrkn.fdev.team/api/v1/tts/speakers
 
 - type: ttsVoice
-  id: Planya
-  name: Planya
-  speaker: planya
-  description: Soft female voice for general speech.
-  source: /N/TTS
+  id: v_female
+  name: "Ви"
+  speaker: v_female
+  gender: Female
+  description: "Голос персонажа Ви из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
   roundStart: true
   adminAnnounceRoundPool: true
 
 - type: ttsVoice
-  id: Arthas
-  name: Arthas
-  speaker: arthas
-  description: Deep male voice for general speech.
-  source: /N/TTS
+  id: judy
+  name: "Джуди Альварес"
+  speaker: judy
+  gender: Female
+  description: "Голос персонажа Джуди Альварес из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: maiko
+  name: "Майко Маэда"
+  speaker: maiko
+  gender: Female
+  description: "Голос персонажа Майко Маэда из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: nancy_hartley
+  name: "Нэнси Хартли"
+  speaker: nancy_hartley
+  gender: Female
+  description: "Голос персонажа Нэнси Хартли из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: panam
+  name: "Панам Палмер"
+  speaker: panam
+  gender: Female
+  description: "Голос персонажа Панам Палмер из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: brendan
+  name: "Брендан"
+  speaker: brendan
+  gender: Male
+  description: "Голос персонажа Брендан из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: jackie
+  name: "Джеки Уэллс"
+  speaker: jackie
+  gender: Male
+  description: "Голос персонажа Джеки Уэллс из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: johnny
+  name: "Джонни Сильверхенд"
+  speaker: johnny
+  gender: Male
+  description: "Голос персонажа Джонни Сильверхенд из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mitch
+  name: "Митч Андерсон"
+  speaker: mitch
+  gender: Male
+  description: "Голос персонажа Митч Андерсон из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: oswald_forrest
+  name: "Освальд Форрест"
+  speaker: oswald_forrest
+  gender: Male
+  description: "Голос персонажа Освальд Форрест из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: skippy
+  name: "Скиппи"
+  speaker: skippy
+  gender: Male
+  description: "Голос персонажа Скиппи из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: steve
+  name: "Стив Санчес"
+  speaker: steve
+  gender: Male
+  description: "Голос персонажа Стив Санчес из игры Cyberpunk 2077"
+  source: "Cyberpunk 2077"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: broodmother_dota_2
+  name: "Broodmother"
+  speaker: broodmother_dota_2
+  gender: Female
+  description: "Голос персонажа Broodmother из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: crystal_maiden_dota_2
+  name: "Crystal Maiden"
+  speaker: crystal_maiden_dota_2
+  gender: Female
+  description: "Голос персонажа Crystal Maiden из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: drow_ranger_dota_2
+  name: "Drow Ranger"
+  speaker: drow_ranger_dota_2
+  gender: Female
+  description: "Голос персонажа Drow Ranger из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: legion_commander_dota_2
+  name: "Legion Commander"
+  speaker: legion_commander_dota_2
+  gender: Female
+  description: "Голос персонажа Legion Commander из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: legion_commander_demon_dota_2
+  name: "Legion Commander Demon"
+  speaker: legion_commander_demon_dota_2
+  gender: Female
+  description: "Голос персонажа Legion Commander Demon из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: lina_dota_2
+  name: "Lina"
+  speaker: lina_dota_2
+  gender: Female
+  description: "Голос персонажа Lina из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: luna_dota_2
+  name: "Luna"
+  speaker: luna_dota_2
+  gender: Female
+  description: "Голос персонажа Luna из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mirana_dota_2
+  name: "Mirana"
+  speaker: mirana_dota_2
+  gender: Female
+  description: "Голос персонажа Mirana из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: phantom_assassin_dota_2
+  name: "Phantom Assassin"
+  speaker: phantom_assassin_dota_2
+  gender: Female
+  description: "Голос персонажа Phantom Assassin из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: phantom_assassin_arcana_dota_2
+  name: "Phantom Assassin Arcana"
+  speaker: phantom_assassin_arcana_dota_2
+  gender: Female
+  description: "Голос персонажа Phantom Assassin Arcana из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: queen_of_pain_dota_2
+  name: "Queen Of Pain"
+  speaker: queen_of_pain_dota_2
+  gender: Female
+  description: "Голос персонажа Queen Of Pain из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: templar_assassin_dota_2
+  name: "Templar Assassin"
+  speaker: templar_assassin_dota_2
+  gender: Female
+  description: "Голос персонажа Templar Assassin из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: windranger_dota_2
+  name: "Windranger"
+  speaker: windranger_dota_2
+  gender: Female
+  description: "Голос персонажа Windranger из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: winter_wyvern_dota_2
+  name: "Winter Wyvern"
+  speaker: winter_wyvern_dota_2
+  gender: Female
+  description: "Голос персонажа Winter Wyvern из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: abaddon_dota_2
+  name: "Abaddon"
+  speaker: abaddon_dota_2
+  gender: Male
+  description: "Голос персонажа Abaddon из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: alchemist_dota_2
+  name: "Achemist"
+  speaker: alchemist_dota_2
+  gender: Male
+  description: "Голос персонажа Achemist из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: anti-mage_dota_2
+  name: "Anti-Mage"
+  speaker: anti-mage_dota_2
+  gender: Male
+  description: "Голос персонажа Anti-Mage из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: arc_warden_dota_2
+  name: "Arc Warden"
+  speaker: arc_warden_dota_2
+  gender: Male
+  description: "Голос персонажа Arc Warden из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: batrider_dota_2
+  name: "Batrider"
+  speaker: batrider_dota_2
+  gender: Male
+  description: "Голос персонажа Batrider из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: bloodseeker_dota_2
+  name: "Bloodseeker"
+  speaker: bloodseeker_dota_2
+  gender: Male
+  description: "Голос персонажа Bloodseeker из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: bounty_hunter_dota_2
+  name: "Bounty Hunter"
+  speaker: bounty_hunter_dota_2
+  gender: Male
+  description: "Голос персонажа Bounty Hunter из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: bristleback_dota_2
+  name: "Bristleback"
+  speaker: bristleback_dota_2
+  gender: Male
+  description: "Голос персонажа Bristleback из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: centaur_warrunner_dota_2
+  name: "Centaur Warrunner"
+  speaker: centaur_warrunner_dota_2
+  gender: Male
+  description: "Голос персонажа Centaur Warrunner из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: clinkz_dota_2
+  name: "Clinkz"
+  speaker: clinkz_dota_2
+  gender: Male
+  description: "Голос персонажа Clinkz из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: clockwerk_dota_2
+  name: "Clockwerk"
+  speaker: clockwerk_dota_2
+  gender: Male
+  description: "Голос персонажа Clockwerk из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dazzle_dota_2
+  name: "Dazzle"
+  speaker: dazzle_dota_2
+  gender: Male
+  description: "Голос персонажа Dazzle из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: disruptor_dota_2
+  name: "Disruptor"
+  speaker: disruptor_dota_2
+  gender: Male
+  description: "Голос персонажа Disruptor из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: doom_dota_2
+  name: "Doom"
+  speaker: doom_dota_2
+  gender: Male
+  description: "Голос персонажа Doom из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dragon_knight_dota_2
+  name: "Dragon Knight"
+  speaker: dragon_knight_dota_2
+  gender: Male
+  description: "Голос персонажа Dragon Knight из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dragon_knight_dragon_dota_2
+  name: "Dragon Knight Dragon"
+  speaker: dragon_knight_dragon_dota_2
+  gender: Male
+  description: "Голос персонажа Dragon Knight Dragon из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: earthshaker_dota_2
+  name: "Earthshaker"
+  speaker: earthshaker_dota_2
+  gender: Male
+  description: "Голос персонажа Earthshaker из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ember_spirit_dota_2
+  name: "Ember Spirit"
+  speaker: ember_spirit_dota_2
+  gender: Male
+  description: "Голос персонажа Ember Spirit из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: enigma_dota_2
+  name: "Enigma"
+  speaker: enigma_dota_2
+  gender: Male
+  description: "Голос персонажа Enigma из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: gyrocopter_dota_2
+  name: "Gyrocopter"
+  speaker: gyrocopter_dota_2
+  gender: Male
+  description: "Голос персонажа Gyrocopter из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: huskar_dota_2
+  name: "Huskar"
+  speaker: huskar_dota_2
+  gender: Male
+  description: "Голос персонажа Huskar из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: invoker_dota_2
+  name: "Invoker"
+  speaker: invoker_dota_2
+  gender: Male
+  description: "Голос персонажа Invoker из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: juggernaut_dota_2
+  name: "Juggernaut"
+  speaker: juggernaut_dota_2
+  gender: Male
+  description: "Голос персонажа Juggernaut из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: keeper_of_the_light_dota_2
+  name: "Keeper Of The Light"
+  speaker: keeper_of_the_light_dota_2
+  gender: Male
+  description: "Голос персонажа Keeper Of The Light из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: kunkka_dota_2
+  name: "Kunkka"
+  speaker: kunkka_dota_2
+  gender: Male
+  description: "Голос персонажа Kunkka из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: lich_dota_2
+  name: "Lich"
+  speaker: lich_dota_2
+  gender: Male
+  description: "Голос персонажа Lich из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: lycan_dota_2
+  name: "Lycan"
+  speaker: lycan_dota_2
+  gender: Male
+  description: "Голос персонажа Lycan из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: lycan_wolf_dota_2
+  name: "Lycan Wolf"
+  speaker: lycan_wolf_dota_2
+  gender: Male
+  description: "Голос персонажа Lycan Wolf из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: meepo_dota_2
+  name: "Meepo"
+  speaker: meepo_dota_2
+  gender: Male
+  description: "Голос персонажа Meepo из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: monkey_king_dota_2
+  name: "Monkey King"
+  speaker: monkey_king_dota_2
+  gender: Male
+  description: "Голос персонажа Monkey King из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: monkey_king_crown_dota_2
+  name: "Monkey King Crown"
+  speaker: monkey_king_crown_dota_2
+  gender: Male
+  description: "Голос персонажа Monkey King Crown из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: necrophos_dota_2
+  name: "Necrophos"
+  speaker: necrophos_dota_2
+  gender: Male
+  description: "Голос персонажа Necrophos из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: nyx_assassin_dota_2
+  name: "Nyx Assassin"
+  speaker: nyx_assassin_dota_2
+  gender: Male
+  description: "Голос персонажа Nyx Assassin из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: omniknight_dota_2
+  name: "Omniknight"
+  speaker: omniknight_dota_2
+  gender: Male
+  description: "Голос персонажа Omniknight из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: outworld_destroyer_dota_2
+  name: "Outworld Destroyer"
+  speaker: outworld_destroyer_dota_2
+  gender: Male
+  description: "Голос персонажа Outworld Destroyer из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: phantom_lancer_dota_2
+  name: "Phantom Lancer"
+  speaker: phantom_lancer_dota_2
+  gender: Male
+  description: "Голос персонажа Phantom Lancer из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: pudge_dota_2
+  name: "Pudge"
+  speaker: pudge_dota_2
+  gender: Male
+  description: "Голос персонажа Pudge из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: razor_dota_2
+  name: "Razor"
+  speaker: razor_dota_2
+  gender: Male
+  description: "Голос персонажа Razor из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: riki_dota_2
+  name: "Riki"
+  speaker: riki_dota_2
+  gender: Male
+  description: "Голос персонажа Riki из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: rubick_dota_2
+  name: "Rubick"
+  speaker: rubick_dota_2
+  gender: Male
+  description: "Голос персонажа Rubick из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sand_king_dota_2
+  name: "Sand King"
+  speaker: sand_king_dota_2
+  gender: Male
+  description: "Голос персонажа Sand King из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: shadow_fiend_dota_2
+  name: "Shadow Fiend"
+  speaker: shadow_fiend_dota_2
+  gender: Male
+  description: "Голос персонажа Shadow Fiend из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: shadow_shaman_dota_2
+  name: "Shadow Shaman"
+  speaker: shadow_shaman_dota_2
+  gender: Male
+  description: "Голос персонажа Shadow Shaman из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: skywrath_mage_dota_2
+  name: "Skywrath Mage"
+  speaker: skywrath_mage_dota_2
+  gender: Male
+  description: "Голос персонажа Skywrath Mage из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: slardar_dota_2
+  name: "Slardar"
+  speaker: slardar_dota_2
+  gender: Male
+  description: "Голос персонажа Slardar из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: slark_dota_2
+  name: "Slark"
+  speaker: slark_dota_2
+  gender: Male
+  description: "Голос персонажа Slark из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: spirit_breaker_dota_2
+  name: "Spirit Breaker"
+  speaker: spirit_breaker_dota_2
+  gender: Male
+  description: "Голос персонажа Spirit Breaker из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: storm_spirit_dota_2
+  name: "Storm Spirit"
+  speaker: storm_spirit_dota_2
+  gender: Male
+  description: "Голос персонажа Storm Spirit из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sven_dota_2
+  name: "Sven"
+  speaker: sven_dota_2
+  gender: Male
+  description: "Голос персонажа Sven из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tidehunter_dota_2
+  name: "Tidehunter"
+  speaker: tidehunter_dota_2
+  gender: Male
+  description: "Голос персонажа Tidehunter из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: treant_protector_dota_2
+  name: "Treant Protector"
+  speaker: treant_protector_dota_2
+  gender: Male
+  description: "Голос персонажа Treant Protector из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: underlord_dota_2
+  name: "Underlord"
+  speaker: underlord_dota_2
+  gender: Male
+  description: "Голос персонажа Underlord из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ursa_dota_2
+  name: "Ursa"
+  speaker: ursa_dota_2
+  gender: Male
+  description: "Голос персонажа Ursa из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: witch_doctor_dota_2
+  name: "Witch Doctor"
+  speaker: witch_doctor_dota_2
+  gender: Male
+  description: "Голос персонажа Witch Doctor из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: wraith_king_dota_2
+  name: "Wraith King"
+  speaker: wraith_king_dota_2
+  gender: Male
+  description: "Голос персонажа Wraith King из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: zeus_dota_2
+  name: "Zeus"
+  speaker: zeus_dota_2
+  gender: Male
+  description: "Голос персонажа Zeus из игры Dota 2"
+  source: "Dota 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: good_thalya
+  name: "Добрая Талия"
+  speaker: good_thalya
+  gender: Female
+  description: "Голос персонажа Добрая Талия из игры Dungeons 3"
+  source: "Dungeons 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: evil_thalya
+  name: "Злая Талия"
+  speaker: evil_thalya
+  gender: Female
+  description: "Голос персонажа Злая Талия из игры Dungeons 3"
+  source: "Dungeons 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: narrator_d3
+  name: "Рассказчик"
+  speaker: narrator_d3
+  gender: Male
+  description: "Голос персонажа Рассказчик из игры Dungeons 3"
+  source: "Dungeons 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: butch
+  name: "Бутч Харрис"
+  speaker: butch
+  gender: Male
+  description: "Голос персонажа Бутч Харрис из игры Fallout 2"
+  source: "Fallout 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: richardson
+  name: "Дик Ричардсон"
+  speaker: richardson
+  gender: Male
+  description: "Голос персонажа Ричард «Дик» Ричардсон из игры Fallout 2"
+  source: "Fallout 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: myron
+  name: "Майрон"
+  speaker: myron
+  gender: Male
+  description: "Голос персонажа Майрон из игры Fallout 2"
+  source: "Fallout 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: marcus
+  name: "Маркус"
+  speaker: marcus
+  gender: Male
+  description: "Голос персонажа Маркус из игры Fallout 2"
+  source: "Fallout 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: officer_enclave
+  name: "Офицер Анклава"
+  speaker: officer_enclave
+  gender: Male
+  description: "Голос персонажа Офицер Анклава из игры Fallout 2"
+  source: "Fallout 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dornan
+  name: "Сержант Дорнан"
+  speaker: dornan
+  gender: Male
+  description: "Голос персонажа Сержант Дорнан из игры Fallout 2"
+  source: "Fallout 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sulik
+  name: "Сулик"
+  speaker: sulik
+  gender: Male
+  description: "Голос персонажа Сулик из игры Fallout 2"
+  source: "Fallout 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: moira_brown
+  name: "Мойра Браун"
+  speaker: moira_brown
+  gender: Female
+  description: "Голос персонажа Мойра Браун из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sarah_lyons_fl3
+  name: "Сара Лайонс"
+  speaker: sarah_lyons_fl3
+  gender: Female
+  description: "Голос персонажа Сара Лайонс из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sentrybot
+  name: "SentryBot"
+  speaker: sentrybot
+  gender: Male
+  description: "Голос персонажа SentryBot из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: jericho_fl3
+  name: "Джерико"
+  speaker: jericho_fl3
+  gender: Male
+  description: "Голос персонажа Джерико из Fallout 3"
+  source: "Fallout 3"
   roundStart: true
   adminAnnounceRoundPool: true
 
 - type: ttsVoice
   id: john_henry_eden_fl3
-  name: john_henry_eden_fl3
+  name: "Джон Генри Эдем"
   speaker: john_henry_eden_fl3
-  description: asdasd
-  source: /N/TTS
+  gender: Male
+  description: "Голос персонажа Джон Генри Эдем из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: colin_moriarty_fl3
+  name: "Колин Мориарти"
+  speaker: colin_moriarty_fl3
+  gender: Male
+  description: "Голос персонажа Колин Мориарти из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mister_handy_fl3
+  name: "Мистер Помощник"
+  speaker: mister_handy_fl3
+  gender: Male
+  description: "Голос персонажа Мистер Помощник из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mister_gutsy_fl3
+  name: "Мистер Храбрец"
+  speaker: mister_gutsy_fl3
+  gender: Male
+  description: "Голос персонажа Мистер Храбрец из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: robert_maccready
+  name: "Робер МакКриди"
+  speaker: robert_maccready
+  gender: Male
+  description: "Голос персонажа Робер МакКриди из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: elder_lyons_fl3
+  name: "Старейшина Лайонс"
+  speaker: elder_lyons_fl3
+  gender: Male
+  description: "Голос персонажа Старейшина Лайонс из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: super_mutant_fl3
+  name: "Супер-Мутант"
+  speaker: super_mutant_fl3
+  gender: Male
+  description: "Голос персонажа Супер-Мутант из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: threedog
+  name: "Тридогнайт"
+  speaker: threedog
+  gender: Male
+  description: "Голос персонажа Тридогнайт из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: threedog_radio
+  name: "Тридогнайт Радио"
+  speaker: threedog_radio
+  gender: Male
+  description: "Голос персонажа Тридогнайт версия по радио из Fallout 3"
+  source: "Fallout 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: angry_neco_arc
+  name: "Злая Неко-Арк"
+  speaker: angry_neco_arc
+  gender: Female
+  description: "Злой голос персонажа Неко-Арк из Fate"
+  source: "Fate"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: neco
+  name: "Неко-Арк"
+  speaker: neco
+  gender: Female
+  description: "Голос персонажа Неко-Арк из Fate"
+  source: "Fate"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: neco_arc_2
+  name: "Неко-Арк 2"
+  speaker: neco_arc_2
+  gender: Female
+  description: "Голос персонажа Неко-Арк из Fate"
+  source: "Fate"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: alyx
+  name: "Аликс Вэнс"
+  speaker: alyx
+  gender: Female
+  description: "Голос персонажа Аликс Вэнс из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mossman
+  name: "Джудит Моссман"
+  speaker: mossman
+  gender: Female
+  description: "Голос персонажа Джудит Моссман из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: gman
+  name: "G-Man"
+  speaker: gman
+  gender: Male
+  description: "Голос персонажа G-Man из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: barni
+  name: "Барни Калхун"
+  speaker: barni
+  gender: Male
+  description: "Голос персонажа Барни Калхун из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: kleiner
+  name: "Доктор Кляйнер"
+  speaker: kleiner
+  gender: Male
+  description: "Голос персонажа Доктор Кляйнер из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: vance
+  name: "Илай Вэнс"
+  speaker: vance
+  gender: Male
+  description: "Голос персонажа Илай Вэнс из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: father_grigori
+  name: "Отец Григорий"
+  speaker: father_grigori
+  gender: Male
+  description: "Голос персонажа Отец Григорий из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: briman
+  name: "Уоллес Брин"
+  speaker: briman
+  gender: Male
+  description: "Голос персонажа Уоллес Брин из игры Half-Life 2"
+  source: "Half-Life 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: jaina
+  name: "Джайна Праудмур"
+  speaker: jaina
+  gender: Female
+  description: "Голос персонажа Джайна Праудмур из игры Hearthstone"
+  source: "Hearthstone"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: anduin
+  name: "Андуин Ринн"
+  speaker: anduin
+  gender: Male
+  description: "Голос персонажа Андуин Ринн из игры Hearthstone"
+  source: "Hearthstone"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: brukan
+  name: "Бру'кан"
+  speaker: brukan
+  gender: Male
+  description: "Голос персонажа Бру'кан из игры Hearthstone"
+  source: "Hearthstone"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: garrosh
+  name: "Гаррош Адский Крик"
+  speaker: garrosh
+  gender: Male
+  description: "Голос персонажа Гаррош Адский Крик из игры Hearthstone"
+  source: "Hearthstone"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: uther_hs
+  name: "Утер Светоносный"
+  speaker: uther_hs
+  gender: Male
+  description: "Голос персонажа Утер Светоносный из игры Hearthstone"
+  source: "Hearthstone"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dinah_hecat
+  name: "Дина Гекат"
+  speaker: dinah_hecat
+  gender: Female
+  description: "Голос персонажа Дина Гекат из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: zenobianoke
+  name: "Зенобия Ноук"
+  speaker: zenobianoke
+  gender: Female
+  description: "Голос персонажа Зенобия Ноук из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ignatiaflootravel
+  name: "Игнатия Уайлдсмит"
+  speaker: ignatiaflootravel
+  gender: Female
+  description: "Голос персонажа Игнатия Уайлдсмит из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: matildaweasley
+  name: "Матильда Уизли"
+  speaker: matildaweasley
+  gender: Female
+  description: "Голос персонажа Матильда Уизли из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: natsaionai
+  name: "Натсай Онай"
+  speaker: natsaionai
+  gender: Female
+  description: "Голос персонажа Натсай Онай из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: poppysweeting
+  name: "Поппи Добринг"
+  speaker: poppysweeting
+  gender: Female
+  description: "Голос персонажа Поппи Добринг из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: samantha_dale
+  name: "Саманта Дейл"
+  speaker: samantha_dale
+  gender: Female
+  description: "Голос персонажа Саманта Дейл из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sirona_ryan
+  name: "Сирона Райан"
+  speaker: sirona_ryan
+  gender: Female
+  description: "Голос персонажа Сирона Райан из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sophronia_franklin
+  name: "Софрония Франклин"
+  speaker: sophronia_franklin
+  gender: Female
+  description: "Голос персонажа Софрония Франклин из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: abraham_ronen
+  name: "Абрахам Ронен"
+  speaker: abraham_ronen
+  gender: Male
+  description: "Голос персонажа Абрахам Ронен из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: amitkakkar
+  name: "Амит Таккар"
+  speaker: amitkakkar
+  gender: Male
+  description: "Голос персонажа Амит Таккар из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: victorrookwood
+  name: "Виктор Руквуд"
+  speaker: victorrookwood
+  gender: Male
+  description: "Голос персонажа Виктор Руквуд из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: gladwinmoon
+  name: "Глэдвин Мун"
+  speaker: gladwinmoon
+  gender: Male
+  description: "Голос персонажа Глэдвин Мун из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: generic_goblin_b
+  name: "Гоблин Б"
+  speaker: generic_goblin_b
+  gender: Male
+  description: "Голос персонажа Гоблин Б из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: generic_goblin_c
+  name: "Гоблин В"
+  speaker: generic_goblin_c
+  gender: Male
+  description: "Голос персонажа Гоблин В из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sanctuary_house_elf
+  name: "Домовой эльф из святилища"
+  speaker: sanctuary_house_elf
+  gender: Male
+  description: "Голос персонажа Домовой эльф из святилища из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: lodgok
+  name: "Лодгок"
+  speaker: lodgok
+  gender: Male
+  description: "Голос персонажа Лодгок из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ominisgaunt
+  name: "Оминис Мракс"
+  speaker: ominisgaunt
+  gender: Male
+  description: "Голос персонажа Оминис Мракс из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ranrak
+  name: "Ранрок"
+  speaker: ranrak
+  gender: Male
+  description: "Голос персонажа Ранрок из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: phineasblack
+  name: "Финеас Найджелус Блэк"
+  speaker: phineasblack
+  gender: Male
+  description: "Голос персонажа Финеас Найджелус Блэк из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: everett_clopton
+  name: "Эверетт Клоптон"
+  speaker: everett_clopton
+  gender: Male
+  description: "Голос персонажа Эверетт Клоптон из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: aesop_sharp
+  name: "Эзоп Шарп"
+  speaker: aesop_sharp
+  gender: Male
+  description: "Голос персонажа Эзоп Шарп из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: eleazarfig
+  name: "Элеазар Фиг"
+  speaker: eleazarfig
+  gender: Male
+  description: "Голос персонажа Элеазар Фиг из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ernielark
+  name: "Эрни Ларк"
+  speaker: ernielark
+  gender: Male
+  description: "Голос персонажа Эрни Ларк из игры Hogwarts Legacy"
+  source: "Hogwarts Legacy"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: kingpin
+  name: "Кингпин"
+  speaker: kingpin
+  gender: Male
+  description: "Голос Кингпина из игры Kingpin: Life of Crime"
+  source: "Kingpin: Life of Crime"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: caitlyn
+  name: "Кэйтлин"
+  speaker: caitlyn
+  gender: Female
+  description: "Голос персонажа Кэйтлин из игры League of Legends"
+  source: "League of Legends"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: azir
+  name: "Азир"
+  speaker: azir
+  gender: Male
+  description: "Голос персонажа Азир из игры League of Legends"
+  source: "League of Legends"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ziggs
+  name: "Зиггс"
+  speaker: ziggs
+  gender: Male
+  description: "Голос персонажа Зиггс из игры League of Legends"
+  source: "League of Legends"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: twitch
+  name: "Твич"
+  speaker: twitch
+  gender: Male
+  description: "Голос персонажа Твич из игры League of Legends"
+  source: "League of Legends"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ekko
+  name: "Экко"
+  speaker: ekko
+  gender: Male
+  description: "Голос персонажа Экко из игры League of Legends"
+  source: "League of Legends"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: amina
+  name: "Амина"
+  speaker: amina
+  gender: Female
+  description: "Голос виртуального ютубера St. Amina Renewal"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mana
+  name: "Мана"
+  speaker: mana
+  gender: Female
+  description: "Голос виртуального ютубера Mana Renewal"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: planya
+  name: "Планя"
+  speaker: planya
+  gender: Female
+  description: "Голос виртуального ютубера Planya Ch"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: charlotte
+  name: "Шарлотта"
+  speaker: charlotte
+  gender: Female
+  description: "Голос виртуального ютубера Charlotte Ch"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: playboyztv
+  name: "PlayBoyzTV"
+  speaker: playboyztv
+  gender: Male
+  description: "Голос канала PlayBoyzTV"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: obama
+  name: "Барак Обама"
+  speaker: obama
+  gender: Male
+  description: "Голос американского президента Барака Обамы"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: bebey
+  name: "Бэбэй"
+  speaker: bebey
+  gender: Male
+  description: "Голос популярного стримера Бэбэя"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: biden
+  name: "Джо Байден"
+  speaker: biden
+  gender: Male
+  description: "Голос американского президента Джо Байдена"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: puchkow
+  name: "Дмитрий Пучков"
+  speaker: puchkow
+  gender: Male
+  description: ""
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dbkn2
+  name: "Добакин"
+  speaker: dbkn2
+  gender: Male
+  description: "Голос начинающего диктора Добакина"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: trump
+  name: "Дональд Трамп"
+  speaker: trump
+  gender: Male
+  description: "Голос американского президента Дональда Трампа"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: moriarti
+  name: "Мориарти"
+  speaker: moriarti
+  gender: Male
+  description: ""
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: papich
+  name: "Папич"
+  speaker: papich
+  gender: Male
+  description: "Голос популярного стримера Папича"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: xrenoid
+  name: "Хреноид"
+  speaker: xrenoid
+  gender: Male
+  description: "Голос начинающего диктора Хреноида"
+  source: "Media"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: villager
+  name: "Житель"
+  speaker: villager
+  gender: Male
+  description: "Голос персонажа Житель из игры Minecraft"
+  source: "Minecraft"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mitakind
+  name: "Добрая Мита"
+  speaker: mitakind
+  gender: Female
+  description: "Голос персонажа Добрая Мита из игры MiSide"
+  source: "MiSide"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mitashorthairs
+  name: "Коротковолосая Мита"
+  speaker: mitashorthairs
+  gender: Female
+  description: "Голос персонажа Коротковолосая Мита из игры MiSide"
+  source: "MiSide"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mita
+  name: "Мита"
+  speaker: mita
+  gender: Female
+  description: "Голос персонажа Мита из игры MiSide"
+  source: "MiSide"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mitaghost
+  name: "Мита Призрак"
+  speaker: mitaghost
+  gender: Female
+  description: "Голос персонажа Мита Призрак из игры MiSide"
+  source: "MiSide"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: mitadream
+  name: "Сонная Мита"
+  speaker: mitadream
+  gender: Female
+  description: "Голос персонажа Сонная Мита из игры MiSide"
+  source: "MiSide"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tracer
+  name: "Трэйсер"
+  speaker: tracer
+  gender: Female
+  description: "Голос персонажа Трэйсер из игры Overwatch"
+  source: "Overwatch"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: glados
+  name: "GLaDOS"
+  speaker: glados
+  gender: Female
+  description: "Голос персонажа GLaDOS из игры Portal 2"
+  source: "Portal 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: turret_floor
+  name: "Турель"
+  speaker: turret_floor
+  gender: Female
+  description: "Голос персонажа Турель из игры Portal 2"
+  source: "Portal 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: space_core
+  name: "Модуль Космоса"
+  speaker: space_core
+  gender: Male
+  description: "Голос персонажа Модуль Космоса из игры Portal 2"
+  source: "Portal 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: adventure_core
+  name: "Модуль Приключений"
+  speaker: adventure_core
+  gender: Male
+  description: "Голос персонажа Модуль Приключений из игры Portal 2"
+  source: "Portal 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: fact_core
+  name: "Модуль Фактов"
+  speaker: fact_core
+  gender: Male
+  description: "Голос персонажа Модуль Фактов из игры Portal 2"
+  source: "Portal 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dude
+  name: "Чувак"
+  speaker: dude
+  gender: Male
+  description: "Голос персонажа Чувак из игры Postal 2"
+  source: "Postal 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: bandit
+  name: "Бандит"
+  speaker: bandit
+  gender: Male
+  description: "Голос персонажа Бандита из игры S.T.A.L.K.E.R."
+  source: "S.T.A.L.K.E.R."
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: forester
+  name: "Лесник"
+  speaker: forester
+  gender: Male
+  description: "Голос персонажа Лесник из игры S.T.A.L.K.E.R."
+  source: "S.T.A.L.K.E.R."
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sidorovich
+  name: "Сидорович"
+  speaker: sidorovich
+  gender: Male
+  description: "Голос персонажа Сидорович из игры S.T.A.L.K.E.R."
+  source: "S.T.A.L.K.E.R."
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: strelok
+  name: "Стрелок"
+  speaker: strelok
+  gender: Male
+  description: "Голос персонажа Стрелок из игры S.T.A.L.K.E.R."
+  source: "S.T.A.L.K.E.R."
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: squidward
+  name: "Сквидвард"
+  speaker: squidward
+  gender: Male
+  description: "Голос персонажа Сквидвард из мультфильма Губка Боб"
+  source: "Sponge Bob"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: adjutant
+  name: "Адъютант"
+  speaker: adjutant
+  gender: Female
+  description: "Голос персонажа Адъютант из игры StarCraft 2"
+  source: "StarCraft 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: hanson
+  name: "Ариэль Хэнсон"
+  speaker: hanson
+  gender: Female
+  description: "Голос персонажа Ариэль Хэнсон из игры StarCraft 2"
+  source: "StarCraft 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: bralik
+  name: "Бралик"
+  speaker: bralik
+  gender: Male
+  description: "Голос персонажа Бралик из игры StarCraft 2"
+  source: "StarCraft 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tosh
+  name: "Габриэль Тош"
+  speaker: tosh
+  gender: Male
+  description: "Голос персонажа Габриэль Тош из игры StarCraft 2"
+  source: "StarCraft 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: horner
+  name: "Мэтт Хорнер"
+  speaker: horner
+  gender: Male
+  description: "Голос персонажа Мэтт Хорнер из игры StarCraft 2"
+  source: "StarCraft 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tychus
+  name: "Тайкус Финдли"
+  speaker: tychus
+  gender: Male
+  description: "Голос персонажа Тайкус Финдли из игры StarCraft 2"
+  source: "StarCraft 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: engineer
+  name: "Инженер"
+  speaker: engineer
+  gender: Male
+  description: "Голос персонажа Инженер из игры Team Fortress 2"
+  source: "Team Fortress 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: medic
+  name: "Медик"
+  speaker: medic
+  gender: Male
+  description: "Голос персонажа Медик из игры Team Fortress 2"
+  source: "Team Fortress 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: demoman
+  name: "Подрывник"
+  speaker: demoman
+  gender: Male
+  description: "Голос персонажа Подрывник из игры Team Fortress 2"
+  source: "Team Fortress 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sniper
+  name: "Снайпер"
+  speaker: sniper
+  gender: Male
+  description: "Голос персонажа Снайпер из игры Team Fortress 2"
+  source: "Team Fortress 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: soldier
+  name: "Солдат"
+  speaker: soldier
+  gender: Male
+  description: "Голос персонажа Солдат из Team Fortress 2 из английской озвучки"
+  source: "Team Fortress 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: heavy
+  name: "Хэви"
+  speaker: heavy
+  gender: Male
+  description: "Голос персонажа Хэви из игры Team Fortress 2"
+  source: "Team Fortress 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: spy
+  name: "Шпион"
+  speaker: spy
+  gender: Male
+  description: "Голос персонажа Шпион из игры Team Fortress 2"
+  source: "Team Fortress 2"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: astrid
+  name: "Астрид"
+  speaker: astrid
+  gender: Female
+  description: "Голос персонажа Астрид из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: female_commander
+  name: "Женщина командир"
+  speaker: female_commander
+  gender: Female
+  description: "Голос женских персонажей командиров из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: maven
+  name: "Мавен Чёрный Вереск"
+  speaker: maven
+  gender: Female
+  description: "Голос персонажа Мавен Чёрный Вереск из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: serana
+  name: "Серана"
+  speaker: serana
+  gender: Female
+  description: "Голос персонажа Серана из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: elenwen
+  name: "Эленвен"
+  speaker: elenwen
+  gender: Female
+  description: "Голос персонажа Эленвен из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: hagraven
+  name: "Ворожея"
+  speaker: hagraven
+  gender: Male
+  description: "Голос Ворожей из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: khajiit
+  name: "Каджит"
+  speaker: khajiit
+  gender: Male
+  description: "Голос персонажа Каджит из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: kodlakwhitemane
+  name: "Кодлак Белая Грива"
+  speaker: kodlakwhitemane
+  gender: Male
+  description: "Голос персонажа Кодлак Белая Грива из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: lord_harkon
+  name: "Лорд Харкон"
+  speaker: lord_harkon
+  gender: Male
+  description: "Голос персонажа Лорд Харкон из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: nazir
+  name: "Назир"
+  speaker: nazir
+  gender: Male
+  description: "Голос персонажа Назир из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: nord
+  name: "Норд"
+  speaker: nord
+  gender: Male
+  description: "Голос Нордов из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard
+  name: "Стражник"
+  speaker: guard
+  gender: Male
+  description: "Голос Стражников из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: emperor
+  name: "Тит Мид II"
+  speaker: emperor
+  gender: Male
+  description: "Голос персонажа Тит Мид II из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ulfric
+  name: "Ульфрик Буревестник"
+  speaker: ulfric
+  gender: Male
+  description: "Голос персонажа Ульфрик Буревестник из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: hermaeus_mora
+  name: "Хермеус Мора"
+  speaker: hermaeus_mora
+  gender: Male
+  description: "Голос персонажа Хермеус Мора из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: cicero
+  name: "Цицерон"
+  speaker: cicero
+  gender: Male
+  description: "Голос персонажа Цицерон из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sheogorath
+  name: "Шеогорат"
+  speaker: sheogorath
+  gender: Male
+  description: "Голос персонажа Шеогорат из игры TES 5 Skyrim"
+  source: "TES 5 Skyrim"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: punisher
+  name: "Каратель"
+  speaker: punisher
+  gender: Male
+  description: "Голос персонажа Каратель из игры The Punisher"
+  source: "The Punisher"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: cerys
+  name: "Керис ан Крайт"
+  speaker: cerys
+  gender: Female
+  description: "Голос персонажа Керис ан Крайт из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: triss
+  name: "Трисс"
+  speaker: triss
+  gender: Female
+  description: "Голос персонажа Трисс из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: philippa_eilhart
+  name: "Филиппа Эйльхарт"
+  speaker: philippa_eilhart
+  gender: Female
+  description: "Голос персонажа Филиппа Эйльхарт из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: cirilla
+  name: "Цирилла"
+  speaker: cirilla
+  gender: Female
+  description: "Голос персонажа Цирилла из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: shani
+  name: "Шани"
+  speaker: shani
+  gender: Female
+  description: "Голос персонажа Шани из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: vesemir
+  name: "Весемир"
+  speaker: vesemir
+  gender: Male
+  description: "Голос персонажа Весемир из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: geralt
+  name: "Геральт из Ривии"
+  speaker: geralt
+  gender: Male
+  description: "Голос персонажа Геральт из Ривии из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guillaume_de_launfal
+  name: "Гильом де Лонфаль"
+  speaker: guillaume_de_launfal
+  gender: Male
+  description: "Голос персонажа Гильом де Лонфаль из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: zoltan_chivay
+  name: "Золтан Хивай"
+  speaker: zoltan_chivay
+  gender: Male
+  description: "Голос персонажа Золтан Хивай из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: kovir_nobleman
+  name: "Ковир Ноблеман"
+  speaker: kovir_nobleman
+  gender: Male
+  description: "Голос персонажа Ковир Ноблеман из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: lambert
+  name: "Ламберт"
+  speaker: lambert
+  gender: Male
+  description: "Голос персонажа Ламберт из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dandelion
+  name: "Лютик"
+  speaker: dandelion
+  gender: Male
+  description: "Голос персонажа Лютик из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: ewald_borsodi
+  name: "Эвальд Борсоди"
+  speaker: ewald_borsodi
+  gender: Male
+  description: "Голос персонажа Эвальд Борсоди из игры The Witcher 3"
+  source: "The Witcher 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: karina_petrova_tb
+  name: "Карина Петрова"
+  speaker: karina_petrova_tb
+  gender: Female
+  description: "Голос персонажа Карина Петрова из игры Tiny Bunny"
+  source: "Tiny Bunny"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: kate_smirnova_tb
+  name: "Катя Смирнова"
+  speaker: kate_smirnova_tb
+  gender: Female
+  description: "Голос персонажа Катя Смирнова из игры Tiny Bunny"
+  source: "Tiny Bunny"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: polina
+  name: "Полина Морозова"
+  speaker: polina
+  gender: Female
+  description: "Голос персонажа Полина Морозова из игры Tiny Bunny"
+  source: "Tiny Bunny"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: boris_petrov_father_tb
+  name: "Борис Петров"
+  speaker: boris_petrov_father_tb
+  gender: Male
+  description: "Голос персонажа Борис Петров из игры Tiny Bunny"
+  source: "Tiny Bunny"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tihonov_tb
+  name: "Лейтенант Тихонов"
+  speaker: tihonov_tb
+  gender: Male
+  description: "Голос персонажа Лейтенант Тихонов из игры Tiny Bunny"
+  source: "Tiny Bunny"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: romka
+  name: "Рома Пятифанов"
+  speaker: romka
+  gender: Male
+  description: "Голос персонажа Рома Пятифанов из игры Tiny Bunny"
+  source: "Tiny Bunny"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: semen_baburin_tb
+  name: "Семён Бабурин"
+  speaker: semen_baburin_tb
+  gender: Male
+  description: "Голос персонажа Семён Бабурин из игры Tiny Bunny"
+  source: "Tiny Bunny"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: arthas
+  name: "Артас Менетил"
+  speaker: arthas
+  gender: Male
+  description: "Голос персонажа Артас Менетил из игры Warcraft 3"
+  source: "Warcraft 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: voljin
+  name: "Вол'джин"
+  speaker: voljin
+  gender: Male
+  description: "Голос персонажа Вол'джин из игры Warcraft 3"
+  source: "Warcraft 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: illidan
+  name: "Иллидан Ярость Бури"
+  speaker: illidan
+  gender: Male
+  description: "Голос персонажа Иллидан Ярость Бури из игры Warcraft 3"
+  source: "Warcraft 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: rexxar
+  name: "Рексар"
+  speaker: rexxar
+  gender: Male
+  description: "Голос персонажа Рексар из игры Warcraft 3"
+  source: "Warcraft 3"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dark_eldar_wych_dow
+  name: "Ведьма Тёмных Эльдар"
+  speaker: dark_eldar_wych_dow
+  gender: Female
+  description: "Голос юнита Ведьма Тёмных Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tutorial_f_dow
+  name: "Инструкторша DOW"
+  speaker: tutorial_f_dow
+  gender: Female
+  description: "Женский голос инструктора из туториала игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: eldar_warlock_dow
+  name: "Колдун Эльдар"
+  speaker: eldar_warlock_dow
+  gender: Female
+  description: "Голос юнита Колдун Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: eldar_fire_dragon_dow
+  name: "Огненный Дракон Эльдар"
+  speaker: eldar_fire_dragon_dow
+  gender: Female
+  description: "Голос юнита Огненный Дракон Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: eldar_farseer_dow
+  name: "Провидец Эльдар"
+  speaker: eldar_farseer_dow
+  gender: Female
+  description: "Голос юнита Провидец Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sisters_battle_sister_dow
+  name: "Сестры Битвы"
+  speaker: sisters_battle_sister_dow
+  gender: Female
+  description: "Голос юнита Сестры Битвы из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: eldar_dow
+  name: "Стражи Эльдар"
+  speaker: eldar_dow
+  gender: Female
+  description: "Голос юнита Стражи Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dark_eldar_archon_dow
+  name: "Архон Тёмных Эльдар"
+  speaker: dark_eldar_archon_dow
+  gender: Male
+  description: "Голос юнита Архон Тёмных Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_assassin_dow
+  name: "Ассасин Имперской Гвардии"
+  speaker: guard_assassin_dow
+  gender: Male
+  description: "Голос юнита Ассасин Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: space_marines_librarian_dow
+  name: "Библиарий Космодесантников"
+  speaker: space_marines_librarian_dow
+  gender: Male
+  description: "Голос юнита Библиарий Космодесантников из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: orks_dow
+  name: "Бойзы Орков"
+  speaker: orks_dow
+  gender: Male
+  description: "Голос юнита Бойзы Орков из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: orks_warboss_dow
+  name: "Варбосс Орков"
+  speaker: orks_warboss_dow
+  gender: Male
+  description: "Голос юнита Варбосс Орков из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dark_eldar_warrior_dow
+  name: "Воин Тёмных Эльдар"
+  speaker: dark_eldar_warrior_dow
+  gender: Male
+  description: "Голос юнита Воин Тёмных Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: orks_grots_dow
+  name: "Гретчины Орков"
+  speaker: orks_grots_dow
+  gender: Male
+  description: "Голос юнита Гретчины Орков из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tutorial_m_dow
+  name: "Инструктор DOW"
+  speaker: tutorial_m_dow
+  gender: Male
+  description: "Мужской голос из туториала игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: space_marines_chaplain_dow
+  name: "Капеллан Космодесантников"
+  speaker: space_marines_chaplain_dow
+  gender: Male
+  description: "Голос юнита Капеллан Космодесантников из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_captain_dow
+  name: "Капитан Имперской Гвардии"
+  speaker: guard_captain_dow
+  gender: Male
+  description: "Голос юнита Капитан Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_karskin_dow
+  name: "Касркин Имперской Гвардии"
+  speaker: guard_karskin_dow
+  gender: Male
+  description: "Голос юнита Касркин Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: chaos_marines_sorceror_dow
+  name: "Колдун Хаоса"
+  speaker: chaos_marines_sorceror_dow
+  gender: Male
+  description: "Голос юнита Колдун Хаоса из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_heavy_weapons_platoon_dow
+  name: "Команда тяжёлого оружия Имперской Гвардии"
+  speaker: guard_heavy_weapons_platoon_dow
+  gender: Male
+  description: "Голос юнита Команда тяжёлого оружия Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: space_marines_force_commander_dow
+  name: "Командир Сил Космодесантников"
+  speaker: space_marines_force_commander_dow
+  gender: Male
+  description: "Голос юнита Командир Сил Космодесантников из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_commissar_dow
+  name: "Комиссар Имперской Гвардии"
+  speaker: guard_commissar_dow
+  gender: Male
+  description: "Голос юнита Комиссар Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: space_marines_dow
+  name: "Космодесантники"
+  speaker: space_marines_dow
+  gender: Male
+  description: "Голос юнита Космодесантники из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: space_marines_2_dow
+  name: "Космодесантники 2"
+  speaker: space_marines_2_dow
+  gender: Male
+  description: "Голос юнита Космодесантники 2 из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: chaos_marines_dow
+  name: "Космодесантники Хаоса"
+  speaker: chaos_marines_dow
+  gender: Male
+  description: "Голос юнита Космодесантники Хаоса из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tau_kroot_dow
+  name: "Крууты Тау"
+  speaker: tau_kroot_dow
+  gender: Male
+  description: "Голос юнита Крууты Тау из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: chaos_marines_cultists_dow
+  name: "Культисты Хаоса"
+  speaker: chaos_marines_cultists_dow
+  gender: Male
+  description: "Голос юнита Культисты Хаоса из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: chaos_marines_lord_dow
+  name: "Лорд Хаоса"
+  speaker: chaos_marines_lord_dow
+  gender: Male
+  description: "Голос юнита Лорд Хаоса из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: dark_eldar_mandrake_dow
+  name: "Мандрагор Тёмных Эльдар"
+  speaker: dark_eldar_mandrake_dow
+  gender: Male
+  description: "Голос юнита Мандрагор Тёмных Эльдар из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: sisters_missionary_dow
+  name: "Миссионер Сестёр Битвы"
+  speaker: sisters_missionary_dow
+  gender: Male
+  description: "Голос юнита Миссионер Сестёр Битвы из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_ogryn_dow
+  name: "Огрин Имперской Гвардии"
+  speaker: guard_ogryn_dow
+  gender: Male
+  description: "Голос юнита Огрин Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_psyker_dow
+  name: "Псайкер Имперской Гвардии"
+  speaker: guard_psyker_dow
+  gender: Male
+  description: "Голос юнита Псайкер Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_priest_dow
+  name: "Священник Имперской Гвардии"
+  speaker: guard_priest_dow
+  gender: Male
+  description: "Голос юнита Священник Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_guardsman_sergeant_dow
+  name: "Сержант Имперской Гвардии"
+  speaker: guard_guardsman_sergeant_dow
+  gender: Male
+  description: "Голос юнита Сержант Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: guard_enginseer_dow
+  name: "Техножрец Имперской Гвардии"
+  speaker: guard_enginseer_dow
+  gender: Male
+  description: "Голос юнита Техножрец Имперской Гвардии из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: orks_flashgitznobs_dow
+  name: "Флэш Гитз и Нобы Орков"
+  speaker: orks_flashgitznobs_dow
+  gender: Male
+  description: "Голос юнитов Флэш Гитз и Нобы Орков из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
+  roundStart: true
+  adminAnnounceRoundPool: true
+
+- type: ttsVoice
+  id: tau_ethereal_dow
+  name: "Эфирный Тау"
+  speaker: tau_ethereal_dow
+  gender: Male
+  description: "Голос юнита Эфирный Тау из игры Warhammer 40,000: Dawn of War"
+  source: "Warhammer 40,000: Dawn of War"
   roundStart: true
   adminAnnounceRoundPool: true

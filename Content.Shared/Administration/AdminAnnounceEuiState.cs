@@ -44,6 +44,8 @@ namespace Content.Shared.Administration
             public AdminAnnounceType AnnounceType;
             public bool UseTTS; // AltHub Space (TTS)
             public string? TTSVoiceId; // AltHub Space (TTS)
+            public bool UseTTSEffect; // AltHub Space (TTS)
+            public string? TTSEffectId; // AltHub Space (TTS)
         }
     }
 }

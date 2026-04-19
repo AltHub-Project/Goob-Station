@@ -4,6 +4,7 @@
 
 using Content.Shared.Humanoid.Prototypes;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Enums;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._AltHub.TTS;
@@ -19,6 +20,9 @@ public sealed class TTSVoicePrototype : IPrototype
 
     [DataField(required: true)]
     public string Speaker { get; } = string.Empty;
+
+    [DataField(required: true)]
+    public Gender Gender { get; } = Gender.Epicene;
 
     [DataField("description")]
     private readonly string? _description;

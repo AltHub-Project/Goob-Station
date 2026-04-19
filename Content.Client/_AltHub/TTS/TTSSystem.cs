@@ -69,7 +69,7 @@ public sealed class TTSSystem : EntitySystem
             };
 
             if (playback != null &&
-                ev.Kind is TTSPlaybackKind.Radio or TTSPlaybackKind.Announcement &&
+                ev.ApplyCommunicationPreset &&
                 _audio.Auxiliaries.ContainsKey(CommunicationPresetId))
             {
                 _audio.SetEffect(playback.Value.Entity, playback.Value.Component, CommunicationPresetId);

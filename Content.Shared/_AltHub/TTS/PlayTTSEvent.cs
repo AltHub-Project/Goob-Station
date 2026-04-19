@@ -13,12 +13,19 @@ public sealed class PlayTTSEvent : EntityEventArgs
     public NetEntity? SourceUid { get; }
     public TTSPlaybackKind Kind { get; }
     public bool IsWhisper { get; }
+    public bool ApplyCommunicationPreset { get; }
 
-    public PlayTTSEvent(byte[] data, NetEntity? sourceUid, TTSPlaybackKind kind, bool isWhisper = false)
+    public PlayTTSEvent(
+        byte[] data,
+        NetEntity? sourceUid,
+        TTSPlaybackKind kind,
+        bool isWhisper = false,
+        bool applyCommunicationPreset = false)
     {
         Data = data;
         SourceUid = sourceUid;
         Kind = kind;
         IsWhisper = isWhisper;
+        ApplyCommunicationPreset = applyCommunicationPreset;
     }
 }

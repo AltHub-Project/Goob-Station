@@ -666,7 +666,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
         if (voiceId != null &&
             _proto.TryIndex<TTSVoicePrototype>(voiceId, out var voice) &&
-            (voice.SpeciesWhitelist == null || voice.SpeciesWhitelist.Contains(humanoid.Species)))
+            TTSVoiceRequirements.IsSelectableForProfile(voice, humanoid.Species, humanoid.Gender))
         {
             resolvedVoice = voice.ID;
         }

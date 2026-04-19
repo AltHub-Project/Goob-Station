@@ -9,8 +9,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Shared._AltHub.TTS;
-using Robust.Shared.Utility;
 
 namespace Content.Server._AltHub.TTS;
 
@@ -81,6 +79,7 @@ public sealed class TTSProviderClient : IDisposable
         string text,
         TTSRequestPriority priority,
         TimeSpan? maxStaleness = null,
+        string? effectId = null,
         CancellationToken cancellationToken = default)
     {
         var options = _options();
@@ -92,11 +91,12 @@ public sealed class TTSProviderClient : IDisposable
             return new ValueTask<byte[]?>((byte[]?) null);
         }
 
-        var requestText = SanitizeRequestText(text);
+        var requestText = TTSTextSanitizer.PrepareForSynthesis(text);
         if (string.IsNullOrWhiteSpace(requestText))
             return new ValueTask<byte[]?>((byte[]?) null);
 
-        var cacheKey = $"{speakerId}\n{NormalizeForCache(requestText)}";
+        var requestEffect = NormalizeEffectId(effectId);
+        var cacheKey = $"{speakerId}\n{requestEffect ?? string.Empty}\n{NormalizeForCache(requestText)}";
         var now = _timeProvider.GetUtcNow();
 
         lock (_sync)
@@ -114,6 +114,7 @@ public sealed class TTSProviderClient : IDisposable
                 cacheKey,
                 speakerId,
                 requestText,
+                requestEffect,
                 priority,
                 now,
                 maxStaleness,
@@ -275,7 +276,7 @@ public sealed class TTSProviderClient : IDisposable
         using var timeoutCts = CancellationTokenSource.CreateLinkedTokenSource(token);
         timeoutCts.CancelAfter(TimeSpan.FromSeconds(Math.Max(1f, options.RequestTimeoutSeconds)));
 
-        var requestUri = BuildRequestUri(options.ApiUrl, request.SpeakerId, request.Text);
+        var requestUri = BuildRequestUri(options.ApiUrl, request.SpeakerId, request.Text, request.EffectId);
         using var httpRequest = new HttpRequestMessage(HttpMethod.Get, requestUri);
         httpRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", options.ApiToken);
 
@@ -308,15 +309,22 @@ public sealed class TTSProviderClient : IDisposable
         return bytes;
     }
 
-    private static string BuildRequestUri(string apiUrl, string speakerId, string text)
+    private static string BuildRequestUri(string apiUrl, string speakerId, string text, string? effectId)
     {
         var normalizedBase = apiUrl.Trim();
         if (!normalizedBase.EndsWith("/api/v1/tts", StringComparison.OrdinalIgnoreCase))
             normalizedBase = normalizedBase.TrimEnd('/') + "/api/v1/tts";
 
-        return string.Create(
+        var uri = string.Create(
             CultureInfo.InvariantCulture,
             $"{normalizedBase}?speaker={Uri.EscapeDataString(speakerId)}&text={Uri.EscapeDataString(text)}&ext=ogg");
+
+        if (string.IsNullOrWhiteSpace(effectId))
+            return uri;
+
+        return string.Create(
+            CultureInfo.InvariantCulture,
+            $"{uri}&effect={Uri.EscapeDataString(effectId)}");
     }
 
     private bool TryTakeTokenNoLock(TTSProviderOptions options, DateTimeOffset now, out TimeSpan delay)
@@ -417,22 +425,6 @@ public sealed class TTSProviderClient : IDisposable
         _cachedBytes -= entry.Data.Length;
     }
 
-    private static string SanitizeRequestText(string text)
-    {
-        var stripped = FormattedMessage.RemoveMarkupPermissive(text);
-        var builder = new StringBuilder(stripped.Length);
-
-        foreach (var rune in stripped.EnumerateRunes())
-        {
-            if (Rune.IsControl(rune) && !Rune.IsWhiteSpace(rune))
-                continue;
-
-            builder.Append(rune.ToString());
-        }
-
-        return builder.ToString().Trim();
-    }
-
     private static string NormalizeForCache(string text)
     {
         var builder = new StringBuilder(text.Length);
@@ -460,10 +452,18 @@ public sealed class TTSProviderClient : IDisposable
         return builder.ToString().Trim();
     }
 
+    private static string? NormalizeEffectId(string? effectId)
+    {
+        return string.IsNullOrWhiteSpace(effectId)
+            ? null
+            : effectId.Trim();
+    }
+
     private readonly record struct QueuedRequest(
         string CacheKey,
         string SpeakerId,
         string Text,
+        string? EffectId,
         TTSRequestPriority Priority,
         DateTimeOffset CreatedAt,
         TimeSpan? MaxStaleness,

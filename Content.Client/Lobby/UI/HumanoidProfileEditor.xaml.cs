@@ -380,6 +380,7 @@ namespace Content.Client.Lobby.UI
             #endregion Gender
 
             InitializeTTSVoice(); // AltHub Space (TTS)
+            TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-voice-tab")); // AltHub Space (TTS)
 
             RefreshSpecies();
 
@@ -573,7 +574,7 @@ namespace Content.Client.Lobby.UI
 
             #region Jobs
 
-            TabContainer.SetTabTitle(1, Loc.GetString("humanoid-profile-editor-jobs-tab"));
+            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-jobs-tab")); // AltHub Space (TTS)
 
             PreferenceUnavailableButton.AddItem(
                 Loc.GetString("humanoid-profile-editor-preference-unavailable-stay-in-lobby-button"),
@@ -597,13 +598,13 @@ namespace Content.Client.Lobby.UI
 
             #endregion Jobs
 
-            TabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
+            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-antags-tab")); // AltHub Space (TTS)
 
             RefreshTraits();
 
             #region Markings
 
-            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-markings-tab"));
+            TabContainer.SetTabTitle(5, Loc.GetString("humanoid-profile-editor-markings-tab")); // AltHub Space (TTS)
 
             Markings.OnMarkingAdded += OnMarkingChange;
             Markings.OnMarkingRemoved += OnMarkingChange;
@@ -681,7 +682,7 @@ namespace Content.Client.Lobby.UI
             TraitsList.DisposeAllChildren();
 
             var traits = _prototypeManager.EnumeratePrototypes<TraitPrototype>().OrderBy(t => Loc.GetString(t.Name)).ToList();
-            TabContainer.SetTabTitle(3, Loc.GetString("humanoid-profile-editor-traits-tab"));
+            TabContainer.SetTabTitle(4, Loc.GetString("humanoid-profile-editor-traits-tab")); // AltHub Space (TTS)
 
             if (traits.Count < 1)
             {
@@ -1454,6 +1455,7 @@ namespace Content.Client.Lobby.UI
             }
 
             UpdateGenderControls();
+            UpdateTTSVoice(); // AltHub Space (TTS)
             Markings.SetSex(newSex);
             ReloadPreview();
         }
@@ -1461,6 +1463,7 @@ namespace Content.Client.Lobby.UI
         private void SetGender(Gender newGender)
         {
             Profile = Profile?.WithGender(newGender);
+            UpdateTTSVoice(); // AltHub Space (TTS)
             ReloadPreview();
         }
 
@@ -1519,6 +1522,9 @@ namespace Content.Client.Lobby.UI
         // AltHub Space -> start (TTS)
         private void SetTTSVoice(string? voiceId)
         {
+            if (Profile?.TTSVoice == voiceId)
+                return;
+
             Profile = Profile?.WithTTSVoice(voiceId);
             IsDirty = true;
         }

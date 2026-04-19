@@ -6,12 +6,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server._AltHub.TTS;
+using Content.Shared._AltHub.TTS;
 using NUnit.Framework;
 using Robust.Shared.Log;
 
@@ -40,8 +42,40 @@ public sealed class TTSProviderClientTests
         Assert.That(request.Headers.Authorization, Is.EqualTo(new AuthenticationHeaderValue("Bearer", "token")));
         Assert.That(request.RequestUri, Is.Not.Null);
         Assert.That(request.RequestUri!.ToString(), Does.Contain("/api/v1/tts?speaker=planya"));
-        Assert.That(request.RequestUri!.ToString(), Does.Contain("text=Hello world"));
-        Assert.That(request.RequestUri!.ToString(), Does.Contain("ext=ogg"));
+        Assert.That(GetQueryValue(request.RequestUri!, "text"), Is.EqualTo("Hello world"));
+        Assert.That(GetQueryValue(request.RequestUri!, "ext"), Is.EqualTo("ogg"));
+    }
+
+    [Test]
+    public async Task SynthesizeAsync_SendsSanitizedCanonicalText()
+    {
+        var time = new MutableTimeProvider(DateTimeOffset.UtcNow);
+        var handler = new RecordingHandler(_ =>
+            Task.FromResult(CreateResponse("payload"u8.ToArray())));
+
+        using var http = new HttpClient(handler);
+        using var provider = new TTSProviderClient(http, () => DefaultOptions(), new TestSawmill(), time);
+
+        await provider.SynthesizeAsync("planya", "Первая. Вторая.", TTSRequestPriority.Speech);
+
+        Assert.That(handler.Requests, Has.Count.EqualTo(1));
+        Assert.That(GetQueryValue(handler.Requests[0].RequestUri!, "text"), Is.EqualTo("Первая; Вторая"));
+    }
+
+    [Test]
+    public async Task SynthesizeAsync_SendsRequestedEffect()
+    {
+        var time = new MutableTimeProvider(DateTimeOffset.UtcNow);
+        var handler = new RecordingHandler(_ =>
+            Task.FromResult(CreateResponse("payload"u8.ToArray())));
+
+        using var http = new HttpClient(handler);
+        using var provider = new TTSProviderClient(http, () => DefaultOptions(), new TestSawmill(), time);
+
+        await provider.SynthesizeAsync("planya", "Attention", TTSRequestPriority.Announcement, effectId: TTSEffects.Announce);
+
+        Assert.That(handler.Requests, Has.Count.EqualTo(1));
+        Assert.That(GetQueryValue(handler.Requests[0].RequestUri!, "effect"), Is.EqualTo(TTSEffects.Announce));
     }
 
     [Test]
@@ -92,6 +126,56 @@ public sealed class TTSProviderClientTests
         Assert.That(first, Is.EqualTo("dedupe"u8.ToArray()));
         Assert.That(second, Is.EqualTo("dedupe"u8.ToArray()));
         Assert.That(handler.Requests, Has.Count.EqualTo(1));
+    }
+
+    [Test]
+    public async Task SynthesizeAsync_UsesCanonicalTextForCacheAndInflightDeduplication()
+    {
+        var gate = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var handler = new RecordingHandler(async _ =>
+        {
+            await gate.Task;
+            return CreateResponse("canonical"u8.ToArray());
+        });
+
+        using var http = new HttpClient(handler);
+        using var provider = new TTSProviderClient(http, () => DefaultOptions(cacheTtlSeconds: 60), new TestSawmill(), new MutableTimeProvider(DateTimeOffset.UtcNow));
+
+        var firstTask = provider.SynthesizeAsync("planya", "Привет. Пока.", TTSRequestPriority.Speech).AsTask();
+        var secondTask = provider.SynthesizeAsync("planya", "Привет; Пока", TTSRequestPriority.Speech).AsTask();
+
+        await Task.Delay(50);
+        Assert.That(handler.Requests, Has.Count.EqualTo(1));
+
+        gate.SetResult();
+
+        var first = await firstTask;
+        var second = await secondTask;
+        var third = await provider.SynthesizeAsync("planya", "Привет. Пока.", TTSRequestPriority.Speech);
+        var fourth = await provider.SynthesizeAsync("planya", "Привет; Пока", TTSRequestPriority.Speech);
+
+        Assert.That(first, Is.EqualTo("canonical"u8.ToArray()));
+        Assert.That(second, Is.EqualTo("canonical"u8.ToArray()));
+        Assert.That(third, Is.EqualTo("canonical"u8.ToArray()));
+        Assert.That(fourth, Is.EqualTo("canonical"u8.ToArray()));
+        Assert.That(handler.Requests, Has.Count.EqualTo(1));
+    }
+
+    [Test]
+    public async Task SynthesizeAsync_SeparatesCacheEntriesByEffect()
+    {
+        var handler = new RecordingHandler(_ =>
+            Task.FromResult(CreateResponse("effect"u8.ToArray())));
+
+        using var http = new HttpClient(handler);
+        using var provider = new TTSProviderClient(http, () => DefaultOptions(cacheTtlSeconds: 60), new TestSawmill(), new MutableTimeProvider(DateTimeOffset.UtcNow));
+
+        await provider.SynthesizeAsync("planya", "Announcement", TTSRequestPriority.Announcement);
+        await provider.SynthesizeAsync("planya", "Announcement", TTSRequestPriority.Announcement, effectId: TTSEffects.Announce);
+        await provider.SynthesizeAsync("planya", "Announcement", TTSRequestPriority.Announcement);
+        await provider.SynthesizeAsync("planya", "Announcement", TTSRequestPriority.Announcement, effectId: TTSEffects.Announce);
+
+        Assert.That(handler.Requests, Has.Count.EqualTo(2));
     }
 
     [Test]
@@ -150,6 +234,16 @@ public sealed class TTSProviderClientTests
         {
             Content = new ByteArrayContent(payload),
         };
+    }
+
+    private static string? GetQueryValue(Uri uri, string key)
+    {
+        return uri.Query.TrimStart('?')
+            .Split('&', StringSplitOptions.RemoveEmptyEntries)
+            .Select(part => part.Split('=', 2))
+            .Where(parts => parts.Length == 2 && parts[0] == key)
+            .Select(parts => Uri.UnescapeDataString(parts[1]))
+            .FirstOrDefault();
     }
 
     private sealed class MutableTimeProvider(DateTimeOffset now) : TimeProvider

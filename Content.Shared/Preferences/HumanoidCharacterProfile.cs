@@ -724,7 +724,7 @@ namespace Content.Shared.Preferences
             // AltHub Space -> start (TTS)
             if (TTSVoice != null &&
                 (!prototypeManager.TryIndex<TTSVoicePrototype>(TTSVoice, out var ttsVoice) ||
-                 (ttsVoice.SpeciesWhitelist != null && !ttsVoice.SpeciesWhitelist.Contains(Species))))
+                 !TTSVoiceRequirements.IsSelectableForProfile(ttsVoice, Species, Gender)))
             {
                 TTSVoice = null;
             }
